@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/loginFragment">
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="me.onething.locationreminder.feature.login.LoginFragment"
+        android:label="@string/login"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_loginFragment_to_remaindersFragment"
+            app:destination="@id/remaindersFragment"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/remaindersFragment"
+        android:name="me.onething.locationreminder.feature.list.RemaindersFragment"
+        android:label="@string/title_remainders"
+        tools:layout="@layout/fragment_remainders">
+        <action
+            android:id="@+id/action_remaindersFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/remaindersFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_remaindersFragment_to_addNewRemainder"
+            app:destination="@id/addNewRemainder" />
+        <action
+            android:id="@+id/action_remaindersFragment_to_remainderDetailFragment"
+            app:destination="@id/remainderDetailFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/addNewRemainder"
+        android:name="me.onething.locationreminder.feature.add.AddNewRemainderFragment"
+        android:label="@string/text_add_new_remainder"
+        tools:layout="@layout/fragment_add_new_remainder">
+        <action
+            android:id="@+id/action_addNewRemainder_to_mapFragment"
+            app:destination="@id/mapFragment" />
+        <action
+            android:id="@+id/action_addNewRemainder_to_remaindersFragment"
+            app:destination="@id/remaindersFragment"
+            app:popUpTo="@id/remaindersFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mapFragment"
+        android:name="me.onething.locationreminder.feature.map.MapFragment"
+        android:label="MapFragment"
+        tools:layout="@layout/fragment_map" />
+    <fragment
+        android:id="@+id/remainderDetailFragment"
+        android:name="me.onething.locationreminder.feature.detail.RemainderDetailFragment"
+        android:label="RemainderDetailFragment"
+        tools:layout="@layout/fragment_remainder_detail">
+
+        <argument
+            android:name="GEOFENCE_EXTRA"
+            app:argType="string" />
+
+
+    </fragment>
+
+</navigation>

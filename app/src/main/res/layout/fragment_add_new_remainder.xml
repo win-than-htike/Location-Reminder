@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <variable
+        name="vm"
+        type="me.onething.locationreminder.feature.add.AddNewRemainderViewModel" />
+
+    <import type="android.view.View" />
+  </data>
+
+  <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingHorizontal="@dimen/spacing_medium"
+        android:paddingVertical="@dimen/spacing_medium">
+
+
+      <com.google.android.material.textfield.TextInputLayout
+          android:id="@+id/textFieldTitle"
+          style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:hint="@string/text_title"
+          app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@={vm.title}" />
+
+      </com.google.android.material.textfield.TextInputLayout>
+
+
+      <com.google.android.material.textfield.TextInputLayout
+          android:id="@+id/textFieldDescription"
+          style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginVertical="@dimen/spacing_medium"
+          android:hint="@string/text_description"
+          app:layout_constraintTop_toBottomOf="@+id/textFieldTitle">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="top|start"
+            android:inputType="textMultiLine"
+            android:lines="6"
+            android:text="@={vm.description}" />
+
+      </com.google.android.material.textfield.TextInputLayout>
+
+
+      <com.google.android.material.button.MaterialButton
+          android:id="@+id/btnLocation"
+          style="@style/RemainderButton"
+          android:layout_width="match_parent"
+          android:layout_height="56dp"
+          android:layout_marginVertical="@dimen/spacing_medium"
+          android:drawablePadding="@dimen/spacing_medium"
+          android:gravity="center"
+          android:paddingHorizontal="@dimen/spacing_medium"
+          android:text="@string/remainder_location"
+          app:icon="@drawable/baseline_location_on_24"
+          app:iconTint="@color/white"
+          app:layout_constraintTop_toBottomOf="@+id/textFieldDescription" />
+
+
+      <TextView
+          android:layout_width="0dp"
+          android:id="@+id/tvSelectedPoi"
+          android:layout_height="wrap_content"
+          android:paddingHorizontal="@dimen/spacing_small"
+          android:paddingVertical="@dimen/spacing_medium"
+          android:text="@{vm.poi.address.featureName.toString()}"
+          android:textColor="@color/black"
+          android:textStyle="bold"
+          app:layout_constrainedWidth="true"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@id/btnLocation"
+          tools:text="Golden Gate" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabSaveRemainder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/spacing_medium"
+        android:contentDescription="@string/floating_action_for_save_new_remainder"
+        android:src="@drawable/baseline_save_24"
+        app:backgroundTint="@color/primaryColor" />
+  </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

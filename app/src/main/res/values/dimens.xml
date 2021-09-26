@@ -1,0 +1,10 @@
+<resources>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="spacing_medium">16sp</dimen>
+    <dimen name="font_large">24sp</dimen>
+    <dimen name="spacing_extra_small">4dp</dimen>
+    <dimen name="height_descrption_input">200dp</dimen>
+    <dimen name="padding_small">8dp</dimen>
+    <dimen name="spacing_small">8dp</dimen>
+    <dimen name="font_regular">16sp</dimen>
+</resources>

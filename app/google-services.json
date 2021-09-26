@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "917386035334",
+    "project_id": "location-reminder-7d1a1",
+    "storage_bucket": "location-reminder-7d1a1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:917386035334:android:1a2c0296c05e9e01cad107",
+        "android_client_info": {
+          "package_name": "me.onething.locationreminder"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "917386035334-i72brbhjkk0tfourl8sn6i0u5jnt4a7f.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "me.onething.locationreminder",
+            "certificate_hash": "d20b2ca01e2eb40d4696b6d1f1dae7c14e77f36c"
+          }
+        },
+        {
+          "client_id": "917386035334-n419sd7ndv1g12ei0suh8kip5ioc03as.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCzPwZNoNkbXJm4mLE8loi6KjzZIzXPapk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "917386035334-n419sd7ndv1g12ei0suh8kip5ioc03as.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

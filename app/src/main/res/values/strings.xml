@@ -1,0 +1,70 @@
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <string name="app_name">Location Reminder</string>
+  <string name="action_settings">Settings</string>
+  <!-- Strings used for fragments for navigation -->
+  <string name="first_fragment_label">First Fragment</string>
+  <string name="second_fragment_label">Second Fragment</string>
+  <string name="next">Next</string>
+  <string name="previous">Previous</string>
+
+  <string name="login">Login</string>
+  <string name="label_login_description_screen">Welcome to the location remainder app.</string>
+  <string name="text_save">Save</string>
+
+  <string name="hello_first_fragment">Hello first fragment</string>
+  <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+
+  <string name="map_api_key">AIzaSyBBzMRAVmlJnLkmr2SHK_TnkrfgJHpauOQ</string>
+
+  <string name="channel_name">GeofenceStatus</string>
+  <string name="notification_channel_description">Location Remainder status notification</string>
+
+  <string name="geofence_not_available">Geofence service is not available now</string>
+  <string name="geofence_too_many_geofences">Your app has registered too many geofences</string>
+  <string name="geofence_too_many_pending_intents">
+        You have provided too many PendingIntents to the addGeofences() call
+    </string>
+  <string name="unknown_geofence_error">
+        Unknown error: the Geofence service is not available now
+    </string>
+
+  <string name="geofences_not_removed">Geofences not removed.</string>
+  <string name="insufficient_permissions">Insufficient permissions.</string>
+  <string name="geofence_error">There was an error in finding your treasure</string>
+
+
+  <string name="android_map_description">An Android robot with a map</string>
+  <string name="content_text">You meet with you location point <xliff:g id="geofence_location">%1$s</xliff:g>.</string>
+  <string name="error_message_title_empty">Enter title</string>
+  <string name="error_message_description_empty">Enter description</string>
+  <string name="error_message_poi_empty">Please select your POI</string>
+  <string name="remainder_deleted">Remainder Deleted</string>
+  <string name="remainder_title">Remainder Title : </string>
+  <string name="remainder_description">Description</string>
+  <string name="remainder_place">Place</string>
+  <string name="remainder_place_latlng">Latitude, Longitude</string>
+  <string name="text_add_new_remainder_sucess">New remainder added</string>
+  <string name="text_unable_to_get_location">Need permission to get your current location</string>
+  <!-- TODO: Remove or change this placeholder text -->
+  <string name="hello_blank_fragment">Hello blank fragment</string>
+  <string name="text_title">Title</string>
+  <string name="text_description">Description</string>
+  <string name="remainder_location">Remainder Location</string>
+  <string name="floating_action_for_save_new_remainder">Action for save new remainder.</string>
+  <string name="title_remainders">Remainders</string>
+  <string name="text_add_new_remainder">Add Reminder</string>
+  <string name="text_empty_remainder">Empty remainders</string>
+  <string name="floating_action_for_add_new_remainder">Action for add new remainder.</string>
+  <string name="logout">Logout</string>
+  <string name="normal_map">Normal Map</string>
+  <string name="hybrid_map">Hybrid Map</string>
+  <string name="satellite_map">Satellite Map</string>
+  <string name="terrain_map">Terrain Map</string>
+  <string name="location_required_error">Location services must be enabled for this game.</string>
+  <string name="permission_denied_explanation">You need to grant location permission in order to get your current location</string>
+  <string name="settings">Settings</string>
+  <string name="text_saved_remainder">Remainder Saved!</string>
+  <string name="geofences_added">Clue Geofence added.</string>
+  <string name="geofences_not_added">Problem in adding geofences.</string>
+
+</resources>

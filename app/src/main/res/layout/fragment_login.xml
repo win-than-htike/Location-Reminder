@@ -5,7 +5,7 @@
 
     <variable
         name="vm"
-        type="me.onething.locationreminder.feature.login.LoginViewModel" />
+        type="com.udacity.project4.feature.login.LoginViewModel" />
   </data>
 
   <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"

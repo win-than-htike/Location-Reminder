@@ -7,7 +7,7 @@
 
     <variable
         name="remainder"
-        type="me.onething.locationreminder.model.Remainder" />
+        type="com.udacity.project4.model.Remainder" />
   </data>
 
   <com.google.android.material.card.MaterialCardView

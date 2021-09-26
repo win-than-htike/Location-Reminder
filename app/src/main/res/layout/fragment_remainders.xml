@@ -6,11 +6,11 @@
 
     <variable
         name="vm"
-        type="me.onething.locationreminder.feature.list.RemaindersViewModel" />
+        type="com.udacity.project4.feature.list.RemaindersViewModel" />
 
     <variable
         name="adapter"
-        type="me.onething.locationreminder.feature.list.RemainderAdapter" />
+        type="com.udacity.project4.feature.list.RemainderAdapter" />
 
     <import type="android.view.View" />
   </data>

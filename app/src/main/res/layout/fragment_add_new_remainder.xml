@@ -5,7 +5,7 @@
 
     <variable
         name="vm"
-        type="me.onething.locationreminder.feature.add.AddNewRemainderViewModel" />
+        type="com.udacity.project4.feature.add.AddNewRemainderViewModel" />
 
     <import type="android.view.View" />
   </data>

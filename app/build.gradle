@@ -11,7 +11,7 @@ android {
     compileSdk 30
 
     defaultConfig {
-        applicationId "me.onething.locationreminder"
+        applicationId "com.udacity.project4"
         minSdk 21
         targetSdk 30
         versionCode 1

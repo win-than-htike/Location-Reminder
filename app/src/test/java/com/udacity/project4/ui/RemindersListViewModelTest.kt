@@ -17,7 +17,7 @@ import org.koin.core.context.stopKoin
 import com.udacity.project4.utils.Result
 
 @ExperimentalCoroutinesApi
-class RemainderViewModelTest {
+class RemindersListViewModelTest {
 
 
   @get:Rule

@@ -26,7 +26,7 @@ import java.util.Locale
 
 @ExperimentalCoroutinesApi
 @RunWith(AndroidJUnit4::class)
-class AddRemainderViewModelTest {
+class SaveReminderViewModelTest {
 
   @get:Rule
   var instantExecutorRule = InstantTaskExecutorRule()

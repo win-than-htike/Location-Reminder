@@ -6,7 +6,7 @@
   <data>
 
     <variable
-        name="remainder"
+        name="reminder"
         type="com.udacity.project4.model.Reminder" />
   </data>
 
@@ -26,7 +26,7 @@
           android:layout_width="0dp"
           android:layout_height="wrap_content"
           android:padding="@dimen/padding_small"
-          android:text="@{remainder.title}"
+          android:text="@{reminder.title}"
           android:textColor="@color/black"
           android:textSize="@dimen/font_regular"
           android:textStyle="bold"
@@ -56,7 +56,7 @@
           android:layout_marginHorizontal="@dimen/spacing_small"
           android:background="@color/secondaryColor"
           android:padding="@dimen/padding_small"
-          android:text="@{remainder.place}"
+          android:text="@{reminder.place}"
           android:textColor="@color/white"
           app:layout_constrainedWidth="true"
           app:layout_constraintBottom_toBottomOf="parent"

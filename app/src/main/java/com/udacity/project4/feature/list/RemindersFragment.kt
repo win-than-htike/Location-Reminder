@@ -19,20 +19,16 @@ import com.udacity.project4.utils.safeNavigate
 import com.udacity.project4.utils.showSnackBar
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-/**
- * A simple [Fragment] subclass.
- * Use the [RemaindersFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
+
 private const val TAG = "RemindersFragment"
 
-class RemindersFragment : Fragment(), RemainderAdapterCallback {
+class RemindersFragment : Fragment(), ReminderAdapterCallback {
 
   private lateinit var binding: FragmentRemindersBinding
 
   val viewModel: RemindersViewModel by viewModel()
 
-  private lateinit var adapter: RemainderAdapter
+  private lateinit var adapter: ReminderAdapter
 
   override fun onCreateView(
     inflater: LayoutInflater, container: ViewGroup?,
@@ -40,14 +36,14 @@ class RemindersFragment : Fragment(), RemainderAdapterCallback {
   ): View? {
     // Inflate the layout for this fragment
     binding = DataBindingUtil.inflate(inflater, R.layout.fragment_reminders, container, false)
-    adapter = RemainderAdapter(this)
+    adapter = ReminderAdapter(this)
     binding.apply {
       vm = viewModel
       lifecycleOwner = viewLifecycleOwner
       adapter = this@RemindersFragment.adapter
     }
-    binding.fabAddRemainder.setOnClickListener {
-      findNavController().safeNavigate(RemaindersFragmentDirections.actionRemaindersFragmentToAddNewRemainder())
+    binding.fabAddReminder.setOnClickListener {
+      findNavController().safeNavigate(RemindersFragmentDirections.actionRemindersFragmentToAddNewReminder())
     }
     initObserver()
     return binding.root
@@ -66,7 +62,7 @@ class RemindersFragment : Fragment(), RemainderAdapterCallback {
 
   override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
     super.onCreateOptionsMenu(menu, inflater)
-    inflater.inflate(R.menu.remainder_menu, menu)
+    inflater.inflate(R.menu.reminder_menu, menu)
   }
 
   override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -82,7 +78,7 @@ class RemindersFragment : Fragment(), RemainderAdapterCallback {
 
   private fun initObserver() {
     viewModel.logoutEvent.observe(viewLifecycleOwner, { logout ->
-      findNavController().navigate(RemaindersFragmentDirections.actionRemaindersFragmentToLoginFragment())
+      findNavController().navigate(RemindersFragmentDirections.actionRemindersFragmentToLoginFragment())
     })
     viewModel.showSnackBarInt.observe(viewLifecycleOwner, Observer {
       it.getContentIfNotHandled()?.let {
@@ -97,16 +93,16 @@ class RemindersFragment : Fragment(), RemainderAdapterCallback {
   }
 
 
-  override fun itemDelete(remainder: Reminder) {
-    viewModel.deleteRemainder(remainder)
+  override fun itemDelete(reminder: Reminder) {
+    viewModel.deleteReminder(reminder)
   }
 
-  override fun onItemClick(remainder: Reminder) {
+  override fun onItemClick(reminder: Reminder) {
     val bundle = Bundle()
-    bundle.putString(GeofenceUtils.GEOFENCE_EXTRA, remainder.id)
+    bundle.putString(GeofenceUtils.GEOFENCE_EXTRA, reminder.id)
     findNavController().safeNavigate(
-      RemaindersFragmentDirections.actionRemaindersFragmentToRemainderDetailFragment(
-        remainder.id
+      RemindersFragmentDirections.actionRemindersFragmentToReminderDetailFragment(
+        reminder.id
       )
     )
   }

@@ -23,7 +23,7 @@ import org.junit.runner.RunWith
 class RemindersDaoTest {
 
   private lateinit var database: AppDatabase
-  private lateinit var remainderDao: RemindersDao
+  private lateinit var reminderDao: RemindersDao
 
   private val reminderData = TestModelUtils.getTestReminder()
 
@@ -37,7 +37,7 @@ class RemindersDaoTest {
       AppDatabase::class.java
     ).build()
 
-    remainderDao = database.remindersDao()
+    reminderDao = database.remindersDao()
   }
 
   @After
@@ -46,17 +46,17 @@ class RemindersDaoTest {
   }
 
   @Test
-  fun saveRemainderToDatabase() = runBlockingTest {
-    remainderDao.insertRemainder(reminderData)
-    val list = remainderDao.getRemainders()
+  fun saveReminderToDatabase() = runBlockingTest {
+    reminderDao.insertReminder(reminderData)
+    val list = reminderDao.getReminders()
     assertThat(list.isEmpty()).isFalse()
     assertThat(list).contains(reminderData)
   }
 
   @Test
   fun retrieveFromDBSucceeds() = runBlockingTest {
-    remainderDao.insertRemainder(reminderData)
-    val reminder = remainderDao.getRemainderById(reminderData.id)
+    reminderDao.insertReminder(reminderData)
+    val reminder = reminderDao.getReminderById(reminderData.id)
     assertThat(reminder).isNotNull()
     assertThat(reminder?.title).isEqualTo(reminderData.title)
     assertThat(reminder?.description).isEqualTo(reminderData.description)
@@ -65,11 +65,11 @@ class RemindersDaoTest {
   }
 
   @Test
-  fun deleteRemainderFromDatabase() = runBlockingTest {
-    remainderDao.insertRemainder(reminderData)
-    val list = remainderDao.getRemainders()
+  fun deleteReminderFromDatabase() = runBlockingTest {
+    reminderDao.insertReminder(reminderData)
+    val list = reminderDao.getReminders()
     assertThat(list.isEmpty()).isFalse()
-    remainderDao.deleteAllRemainders()
-    assertThat(remainderDao.getRemainders()).isEmpty()
+    reminderDao.deleteAllReminders()
+    assertThat(reminderDao.getReminders()).isEmpty()
   }
 }

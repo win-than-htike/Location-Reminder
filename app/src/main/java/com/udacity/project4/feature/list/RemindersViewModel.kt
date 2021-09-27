@@ -24,11 +24,11 @@ class RemindersViewModel constructor(private val repository: RemindersRepository
   val loading = MutableLiveData<Boolean>(false)
 
 
-  private val _remainders: LiveData<List<Reminder>> =
+  private val _reminders: LiveData<List<Reminder>> =
     repository.observeReminders()
 
-  val remainders: LiveData<List<Reminder>>
-    get() = _remainders
+  val reminders: LiveData<List<Reminder>>
+    get() = _reminders
 
 
   val logoutEvent: LiveData<Event<Unit>>
@@ -40,13 +40,13 @@ class RemindersViewModel constructor(private val repository: RemindersRepository
   }
 
 
-  private val _isEmptyRemainders = Transformations.map(remindersList) {
+  private val _isEmptyReminders = Transformations.map(remindersList) {
     it.isNullOrEmpty()
   }
 
 
-  val isEmptyRemainders: LiveData<Boolean>
-    get() = _isEmptyRemainders
+  val isEmptyReminders: LiveData<Boolean>
+    get() = _isEmptyReminders
 
 
   fun logout(context: Context) {
@@ -54,11 +54,11 @@ class RemindersViewModel constructor(private val repository: RemindersRepository
       .addOnSuccessListener { logoutEvent() }
   }
 
-  fun deleteRemainder(remainder: Reminder) {
+  fun deleteReminder(reminder: Reminder) {
     CoroutineScope(Dispatchers.IO).launch {
-      repository.deleteReminder(remainder)
+      repository.deleteReminder(reminder)
     }
-    showSnackBarInt.value = Event(R.string.remainder_deleted)
+    showSnackBarInt.value = Event(R.string.reminder_deleted)
     loadReminders()
   }
 

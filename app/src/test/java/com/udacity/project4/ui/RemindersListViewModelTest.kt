@@ -37,7 +37,7 @@ class RemindersListViewModelTest {
   }
 
   @Test
-  fun checkRemainders_is_return_false() = runBlockingTest {
+  fun checkReminders_is_return_false() = runBlockingTest {
     fakeRepository.saveReminder(
       Reminder(
         "1",
@@ -62,10 +62,10 @@ class RemindersListViewModelTest {
 
 
   @Test
-  fun returnNullForRemainderById_whenNull() = runBlockingTest {
+  fun returnNullForReminderById_whenNull() = runBlockingTest {
     fakeRepository.setShouldReturnError(true)
-    val remainder = fakeRepository.getReminderById("1")
-    assertThat(remainder is Result.Error, `is`(true))
+    val reminder = fakeRepository.getReminderById("1")
+    assertThat(reminder is Result.Error, `is`(true))
   }
 
 

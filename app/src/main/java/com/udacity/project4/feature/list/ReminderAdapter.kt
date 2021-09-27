@@ -8,12 +8,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.udacity.project4.databinding.ItemReminderBinding
 import com.udacity.project4.model.Reminder
 
-interface RemainderAdapterCallback {
-  fun itemDelete(remainder: Reminder)
-  fun onItemClick(remainder: Reminder)
+interface ReminderAdapterCallback {
+  fun itemDelete(reminder: Reminder)
+  fun onItemClick(reminder: Reminder)
 }
 
-class RemainderAdapter(private val callback: RemainderAdapterCallback) :
+class ReminderAdapter(private val callback: ReminderAdapterCallback) :
   ListAdapter<Reminder, ReminderVH>(diffUtils) {
 
 
@@ -46,12 +46,12 @@ class RemainderAdapter(private val callback: RemainderAdapterCallback) :
 
 class ReminderVH(
   private val binding: ItemReminderBinding,
-  private val callback: RemainderAdapterCallback
+  private val callback: ReminderAdapterCallback
 ) :
   RecyclerView.ViewHolder(binding.root) {
   fun onBind(item: Reminder) {
     binding.apply {
-      remainder = item
+      reminder = item
       ivDelete.setOnClickListener { callback.itemDelete(item) }
       this.root.setOnClickListener {
         callback.onItemClick(item)

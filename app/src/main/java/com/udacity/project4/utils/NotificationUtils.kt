@@ -44,16 +44,16 @@ fun pendingIntent(context: Context, placeId: String): PendingIntent {
   bundle.putString(GeofenceUtils.GEOFENCE_EXTRA, placeId)
   return NavDeepLinkBuilder(context)
     .setGraph(R.navigation.nav_graph)
-    .setDestination(R.id.remainderDetailFragment)
+    .setDestination(R.id.reminderDetailFragment)
     .setArguments(bundle)
     .setComponentName(MainActivity::class.java)
     .createPendingIntent()
 }
 
-fun NotificationManager.sendGeofenceEnteredNotification(context: Context, remainder: Reminder) {
+fun NotificationManager.sendGeofenceEnteredNotification(context: Context, reminder: Reminder) {
   val notiId = Date().time.toInt()
   val contentIntent = Intent(context, MainActivity::class.java)
-  contentIntent.putExtra(GeofenceUtils.GEOFENCE_EXTRA, remainder.id)
+  contentIntent.putExtra(GeofenceUtils.GEOFENCE_EXTRA, reminder.id)
   val mapImage = BitmapFactory.decodeResource(
     context.resources,
     R.drawable.map_small
@@ -67,11 +67,11 @@ fun NotificationManager.sendGeofenceEnteredNotification(context: Context, remain
     .setContentText(
       context.getString(
         R.string.content_text,
-        (remainder.place)
+        (reminder.place)
       )
     )
     .setPriority(NotificationCompat.PRIORITY_HIGH)
-    .setContentIntent(pendingIntent(context, remainder.id))
+    .setContentIntent(pendingIntent(context, reminder.id))
     .setSmallIcon(R.drawable.map_small)
     .setStyle(bigPicStyle)
     .setAutoCancel(true)
@@ -80,4 +80,4 @@ fun NotificationManager.sendGeofenceEnteredNotification(context: Context, remain
   notify(notiId, builder.build())
 }
 
-private const val CHANNEL_ID = "LocationRemainderChannel"
+private const val CHANNEL_ID = "LocationReminderChannel"

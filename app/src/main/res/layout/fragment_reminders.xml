@@ -10,7 +10,7 @@
 
     <variable
         name="adapter"
-        type="com.udacity.project4.feature.list.RemainderAdapter" />
+        type="com.udacity.project4.feature.list.ReminderAdapter" />
 
     <import type="android.view.View" />
   </data>
@@ -26,7 +26,7 @@
 
 
       <androidx.recyclerview.widget.RecyclerView
-          android:id="@+id/rvRemainders"
+          android:id="@+id/rvReminders"
           android:layout_width="match_parent"
           android:layout_height="0dp"
           app:adapter="@{adapter}"
@@ -56,7 +56,7 @@
           android:id="@+id/tvEmpty"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:text="@string/text_empty_remainder"
+          android:text="@string/text_empty_reminder"
           android:textColor="@color/black"
           android:textStyle="bold"
           android:visibility="@{vm.showNoData ? View.VISIBLE : View.GONE}"
@@ -77,12 +77,12 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fabAddRemainder"
+        android:id="@+id/fabAddReminder"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/spacing_medium"
-        android:contentDescription="@string/floating_action_for_add_new_remainder"
+        android:contentDescription="@string/floating_action_for_add_new_reminder"
         android:src="@drawable/baseline_add_24"
         app:backgroundTint="@color/primaryColor" />
 

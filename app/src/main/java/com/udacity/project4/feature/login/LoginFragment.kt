@@ -60,7 +60,7 @@ class LoginFragment : Fragment() {
   private fun checkAuth() {
     viewModel.isLoggedIn.observe(viewLifecycleOwner, { loggedIn ->
       if (loggedIn) {
-        findNavController().safeNavigate(LoginFragmentDirections.actionLoginFragmentToRemaindersFragment())
+        findNavController().safeNavigate(LoginFragmentDirections.actionLoginFragmentToRemindersFragment())
       }
     })
   }
@@ -70,7 +70,7 @@ class LoginFragment : Fragment() {
       val user = FirebaseAuth.getInstance().currentUser
       user?.let {
         viewModel.login(it)
-        findNavController().safeNavigate(LoginFragmentDirections.actionLoginFragmentToRemaindersFragment())
+        findNavController().safeNavigate(LoginFragmentDirections.actionLoginFragmentToRemindersFragment())
       }
     }
   }

@@ -38,7 +38,7 @@ class LoginViewModel : ViewModel() {
   val signInIntent = AuthUI.getInstance()
     .createSignInIntentBuilder()
     .setAvailableProviders(providers)
-    .setTheme(R.style.FirebaseUI_RemainderUITheme)
+    .setTheme(R.style.FirebaseUI_ReminderUITheme)
     .setLogo(R.drawable.login_background)
     .build()
 

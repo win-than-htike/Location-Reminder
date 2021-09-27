@@ -32,19 +32,19 @@ class FakeRepository : RemindersRepository {
 
   override suspend fun getReminderById(id: String): Result<Reminder> {
     if (shouldReturnError) {
-      return Result.Error("no remainder found exception")
+      return Result.Error("no reminder found exception")
     }
-    val remainder = reminders.find { it.id == id }
-    return if(remainder!=null){
-      Result.Success(remainder)
+    val reminder = reminders.find { it.id == id }
+    return if(reminder!=null){
+      Result.Success(reminder)
     }else{
-      Result.Error("no remainder found")
+      Result.Error("no reminder found")
     }
   }
 
   override suspend fun getReminders(): Result<List<Reminder>> {
     return if (shouldReturnError) {
-      Result.Error("No remainder found exception")
+      Result.Error("No reminder found exception")
     } else {
       Result.Success(reminders)
     }

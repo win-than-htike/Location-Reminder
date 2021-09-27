@@ -6,26 +6,26 @@ import com.udacity.project4.utils.wrapEspressoIdlingResource
 import com.udacity.project4.utils.Result
 
 class RemindersRepositoryImpl constructor(
-  private val remaindersLocalDataSource: ReminderDataSource,
+  private val remindersLocalDataSource: ReminderDataSource,
 ) :
   RemindersRepository {
 
-  override fun observeReminders() = remaindersLocalDataSource.observeReminders()
+  override fun observeReminders() = remindersLocalDataSource.observeReminders()
 
   override suspend fun saveReminder(reminder: Reminder) {
-    remaindersLocalDataSource.saveReminder(reminder)
+    remindersLocalDataSource.saveReminder(reminder)
   }
 
   override suspend fun deleteReminder(reminder: Reminder) {
     wrapEspressoIdlingResource {
-      remaindersLocalDataSource.deleteReminder(reminder)
+      remindersLocalDataSource.deleteReminder(reminder)
     }
   }
 
   override suspend fun getReminderById(id: String): Result<Reminder> {
     wrapEspressoIdlingResource {
       return try {
-        remaindersLocalDataSource.getReminderById(id)
+        remindersLocalDataSource.getReminderById(id)
       } catch (e: Exception) {
         Result.Error(e.localizedMessage)
       }
@@ -35,7 +35,7 @@ class RemindersRepositoryImpl constructor(
   override suspend fun getReminders(): Result<List<Reminder>> {
     wrapEspressoIdlingResource {
       return try {
-        remaindersLocalDataSource.getReminders()
+        remindersLocalDataSource.getReminders()
       } catch (e: Exception) {
         Result.Error(e.localizedMessage)
       }

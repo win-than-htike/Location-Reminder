@@ -34,7 +34,7 @@ class SaveReminderViewModelTest {
   @get:Rule
   val mainCoroutineRule = MainCoroutineRule()
 
-  private lateinit var addRemainderViewModel: AddNewReminderViewModel
+  private lateinit var addReminderViewModel: AddNewReminderViewModel
   private lateinit var repository: FakeRepository
 
 
@@ -42,47 +42,47 @@ class SaveReminderViewModelTest {
   fun setup() {
     stopKoin()
     repository = FakeRepository()
-    addRemainderViewModel =
+    addReminderViewModel =
       AddNewReminderViewModel(ApplicationProvider.getApplicationContext(), repository)
   }
 
   @Test
-  fun addNewRemainder_setSavedRemainderEvent() {
-    addRemainderViewModel.savedRemainder()
-    val value = addRemainderViewModel.savedRemainderEvent.getOrAwaitValue()
+  fun addNewReminder_setSavedReminderEvent() {
+    addReminderViewModel.savedReminder()
+    val value = addReminderViewModel.savedReminderEvent.getOrAwaitValue()
     assertThat(value, not(nullValue()))
   }
 
   @Test
-  fun checkValidToSaveNewRemainder_return_valid() {
-    addRemainderViewModel.title.value = "test title"
-    addRemainderViewModel.description.value = "test description"
-    addRemainderViewModel.updatePOI(
+  fun checkValidToSaveNewReminder_return_valid() {
+    addReminderViewModel.title.value = "test title"
+    addReminderViewModel.description.value = "test description"
+    addReminderViewModel.updatePOI(
       Point(LatLng(0.0, 0.0), Address(Locale.ENGLISH))
     )
-    val isValid = addRemainderViewModel.isValidToSave()
+    val isValid = addReminderViewModel.isValidToSave()
     assertThat(isValid, `is`(true))
   }
 
   @Test
-  fun checkValidToSaveNewRemainder_return_notValid() {
-    addRemainderViewModel.title.value = "test title"
-    addRemainderViewModel.description.value = "test description"
-    val isValid = addRemainderViewModel.isValidToSave()
-    assertThat(addRemainderViewModel.showSnackBarInt.getOrAwaitValue(), not(nullValue()))
+  fun checkValidToSaveNewReminder_return_notValid() {
+    addReminderViewModel.title.value = "test title"
+    addReminderViewModel.description.value = "test description"
+    val isValid = addReminderViewModel.isValidToSave()
+    assertThat(addReminderViewModel.showSnackBarInt.getOrAwaitValue(), not(nullValue()))
     assertThat(isValid, `is`(false))
   }
 
   @Test
-  fun addNewRemainder_dataAndSnackbarUpdated() = mainCoroutineRule.runBlockingTest {
-    addRemainderViewModel.title.value = "test title"
-    addRemainderViewModel.description.value = "test description"
-    addRemainderViewModel.savedRemainder()
+  fun addNewReminder_dataAndSnackbarUpdated() = mainCoroutineRule.runBlockingTest {
+    addReminderViewModel.title.value = "test title"
+    addReminderViewModel.description.value = "test description"
+    addReminderViewModel.savedReminder()
 
-    val snackBarValue = addRemainderViewModel.savedRemainderEvent.getOrAwaitValue()
+    val snackBarValue = addReminderViewModel.savedReminderEvent.getOrAwaitValue()
     assertThat(
       snackBarValue?.getContentIfNotHandled(),
-      `is`(R.string.text_add_new_remainder_sucess)
+      `is`(R.string.text_add_new_reminder_sucess)
     )
   }
 }

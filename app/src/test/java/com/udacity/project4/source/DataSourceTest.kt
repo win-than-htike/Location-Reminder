@@ -23,8 +23,8 @@ class DataSourceTest {
 
 
   @Test
-  fun addRemainderAndRetrieve_listNotEmpty() = runBlockingTest {
-    dataSource.saveReminder(TestModelUtils.getTestRemainder())
+  fun addReminderAndRetrieve_listNotEmpty() = runBlockingTest {
+    dataSource.saveReminder(TestModelUtils.getTestReminder())
     val list = dataSource.getReminders() as Result.Success<List<Reminder>>
     assertThat(list.data.isEmpty(), `is`(false))
   }
@@ -32,26 +32,26 @@ class DataSourceTest {
 
   @Test
   fun saveAndRetrieveById() = runBlockingTest {
-    val remainder = TestModelUtils.getTestRemainder()
-    dataSource.saveReminder(remainder)
+    val reminder = TestModelUtils.getTestReminder()
+    dataSource.saveReminder(reminder)
 
-    val savedRemainder = dataSource.getReminderById(remainder.id)
-    assertThat(savedRemainder is Result.Success,`is`(true))
-    savedRemainder as Result.Success
+    val savedReminder = dataSource.getReminderById(reminder.id)
+    assertThat(savedReminder is Result.Success,`is`(true))
+    savedReminder as Result.Success
 
-    assertThat(remainder.title, `is`(savedRemainder.data.title))
+    assertThat(reminder.title, `is`(savedReminder.data.title))
   }
 
 
   @Test
   fun saveAndDeleteByID() = runBlockingTest {
-    val remainder = TestModelUtils.getTestRemainder()
-    dataSource.saveReminder(remainder)
+    val reminder = TestModelUtils.getTestReminder()
+    dataSource.saveReminder(reminder)
     val list = dataSource.getReminders() as Result.Success<List<Reminder>>
     assertThat(list.data.isNotEmpty(), `is`(true))
-    dataSource.deleteReminder(remainder)
-    val savedRemainder = dataSource.getReminderById(remainder.id)
-    assertThat(savedRemainder is Result.Error, `is`(true))
+    dataSource.deleteReminder(reminder)
+    val savedReminder = dataSource.getReminderById(reminder.id)
+    assertThat(savedReminder is Result.Error, `is`(true))
 
   }
 

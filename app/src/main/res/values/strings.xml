@@ -8,7 +8,7 @@
   <string name="previous">Previous</string>
 
   <string name="login">Login</string>
-  <string name="label_login_description_screen">Welcome to the location remainder app.</string>
+  <string name="label_login_description_screen">Welcome to the location reminder app.</string>
   <string name="text_save">Save</string>
 
   <string name="hello_first_fragment">Hello first fragment</string>
@@ -17,7 +17,7 @@
   <string name="map_api_key">AIzaSyBBzMRAVmlJnLkmr2SHK_TnkrfgJHpauOQ</string>
 
   <string name="channel_name">GeofenceStatus</string>
-  <string name="notification_channel_description">Location Remainder status notification</string>
+  <string name="notification_channel_description">Location Reminder status notification</string>
 
   <string name="geofence_not_available">Geofence service is not available now</string>
   <string name="geofence_too_many_geofences">Your app has registered too many geofences</string>
@@ -38,23 +38,23 @@
   <string name="error_message_title_empty">Enter title</string>
   <string name="error_message_description_empty">Enter description</string>
   <string name="error_message_poi_empty">Please select your POI</string>
-  <string name="remainder_deleted">Remainder Deleted</string>
-  <string name="remainder_title">Remainder Title : </string>
-  <string name="remainder_description">Description</string>
-  <string name="remainder_place">Place</string>
-  <string name="remainder_place_latlng">Latitude, Longitude</string>
-  <string name="text_add_new_remainder_sucess">New remainder added</string>
+  <string name="reminder_deleted">Reminder Deleted</string>
+  <string name="reminder_title">Reminder Title : </string>
+  <string name="reminder_description">Description</string>
+  <string name="reminder_place">Place</string>
+  <string name="reminder_place_latlng">Latitude, Longitude</string>
+  <string name="text_add_new_reminder_sucess">New reminder added</string>
   <string name="text_unable_to_get_location">Need permission to get your current location</string>
   <!-- TODO: Remove or change this placeholder text -->
   <string name="hello_blank_fragment">Hello blank fragment</string>
   <string name="text_title">Title</string>
   <string name="text_description">Description</string>
-  <string name="remainder_location">Remainder Location</string>
-  <string name="floating_action_for_save_new_remainder">Action for save new remainder.</string>
-  <string name="title_remainders">Remainders</string>
-  <string name="text_add_new_remainder">Add Reminder</string>
-  <string name="text_empty_remainder">Empty remainders</string>
-  <string name="floating_action_for_add_new_remainder">Action for add new remainder.</string>
+  <string name="reminder_location">Reminder Location</string>
+  <string name="floating_action_for_save_new_reminder">Action for save new reminder.</string>
+  <string name="title_reminders">Reminders</string>
+  <string name="text_add_new_reminder">Add Reminder</string>
+  <string name="text_empty_reminder">Empty reminders</string>
+  <string name="floating_action_for_add_new_reminder">Action for add new reminder.</string>
   <string name="logout">Logout</string>
   <string name="normal_map">Normal Map</string>
   <string name="hybrid_map">Hybrid Map</string>
@@ -63,7 +63,7 @@
   <string name="location_required_error">Location services must be enabled for this game.</string>
   <string name="permission_denied_explanation">You need to grant location permission in order to get your current location</string>
   <string name="settings">Settings</string>
-  <string name="text_saved_remainder">Remainder Saved!</string>
+  <string name="text_saved_reminder">Reminder Saved!</string>
   <string name="geofences_added">Clue Geofence added.</string>
   <string name="geofences_not_added">Problem in adding geofences.</string>
 

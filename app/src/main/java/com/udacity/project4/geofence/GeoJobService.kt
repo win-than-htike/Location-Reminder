@@ -38,9 +38,9 @@ class GeoJobService : JobIntentService() {
 
   private fun showNotification(geo: Geofence) {
     CoroutineScope(Dispatchers.IO).launch {
-      val remainder = repository.getReminderById(geo.requestId) as Result.Success
-      Timber.d("Geofence Remainder $remainder")
-      if (remainder != null) {
+      val reminder = repository.getReminderById(geo.requestId) as Result.Success
+      Timber.d("Geofence Reminder $reminder")
+      if (reminder != null) {
         val notificationManager = ContextCompat.getSystemService(
           this@GeoJobService.applicationContext,
           NotificationManager::class.java
@@ -48,7 +48,7 @@ class GeoJobService : JobIntentService() {
 
         notificationManager.sendGeofenceEnteredNotification(
           this@GeoJobService.applicationContext,
-          remainder.data
+          reminder.data
         )
       }
     }

@@ -11,42 +11,42 @@
         android:label="@string/login"
         tools:layout="@layout/fragment_login">
         <action
-            android:id="@+id/action_loginFragment_to_remaindersFragment"
-            app:destination="@id/remaindersFragment"
+            android:id="@+id/action_loginFragment_to_remindersFragment"
+            app:destination="@id/remindersFragment"
             app:popUpTo="@id/loginFragment"
             app:popUpToInclusive="true" />
     </fragment>
 
     <fragment
-        android:id="@+id/remaindersFragment"
-        android:name="com.udacity.project4.feature.list.RemaindersFragment"
-        android:label="@string/title_remainders"
+        android:id="@+id/remindersFragment"
+        android:name="com.udacity.project4.feature.list.RemindersFragment"
+        android:label="@string/title_reminders"
         tools:layout="@layout/fragment_reminders">
         <action
-            android:id="@+id/action_remaindersFragment_to_loginFragment"
+            android:id="@+id/action_remindersFragment_to_loginFragment"
             app:destination="@id/loginFragment"
-            app:popUpTo="@id/remaindersFragment"
+            app:popUpTo="@id/remindersFragment"
             app:popUpToInclusive="true" />
         <action
-            android:id="@+id/action_remaindersFragment_to_addNewRemainder"
-            app:destination="@id/addNewRemainder" />
+            android:id="@+id/action_remindersFragment_to_addNewReminder"
+            app:destination="@id/addNewReminder" />
         <action
-            android:id="@+id/action_remaindersFragment_to_remainderDetailFragment"
-            app:destination="@id/remainderDetailFragment" />
+            android:id="@+id/action_remindersFragment_to_reminderDetailFragment"
+            app:destination="@id/reminderDetailFragment" />
     </fragment>
 
     <fragment
-        android:id="@+id/addNewRemainder"
+        android:id="@+id/addNewReminder"
         android:name="com.udacity.project4.feature.add.AddNewReminderFragment"
-        android:label="@string/text_add_new_remainder"
+        android:label="@string/text_add_new_reminder"
         tools:layout="@layout/fragment_add_new_reminder">
         <action
-            android:id="@+id/action_addNewRemainder_to_mapFragment"
+            android:id="@+id/action_addNewReminder_to_mapFragment"
             app:destination="@id/mapFragment" />
         <action
-            android:id="@+id/action_addNewRemainder_to_remaindersFragment"
-            app:destination="@id/remaindersFragment"
-            app:popUpTo="@id/remaindersFragment" />
+            android:id="@+id/action_addNewReminder_to_remindersFragment"
+            app:destination="@id/remindersFragment"
+            app:popUpTo="@id/remindersFragment" />
     </fragment>
     <fragment
         android:id="@+id/mapFragment"
@@ -54,9 +54,9 @@
         android:label="MapFragment"
         tools:layout="@layout/fragment_map" />
     <fragment
-        android:id="@+id/remainderDetailFragment"
+        android:id="@+id/reminderDetailFragment"
         android:name="com.udacity.project4.feature.detail.ReminderDetailFragment"
-        android:label="RemainderDetailFragment"
+        android:label="ReminderDetailFragment"
         tools:layout="@layout/fragment_reminder_detail">
 
         <argument

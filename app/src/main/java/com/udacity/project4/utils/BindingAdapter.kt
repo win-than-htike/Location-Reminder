@@ -17,8 +17,8 @@ fun setItems(recyclerView: RecyclerView, items: List<Reminder>?) {
 }
 
 @BindingAdapter("latlng")
-fun bindLatLng(textView: TextView, remainder: Reminder?) {
-  remainder?.let {
-    textView.text = "${remainder.latitude}, ${remainder.longitude}"
+fun bindLatLng(textView: TextView, reminder: Reminder?) {
+  reminder?.let {
+    textView.text = "${reminder.latitude}, ${reminder.longitude}"
   }
 }

@@ -28,8 +28,8 @@ import java.io.IOException
 @ExperimentalCoroutinesApi
 @RunWith(AndroidJUnit4::class)
 class RoomDatabaseTest {
-  private lateinit var remainderDao: RemindersDao
-  private lateinit var remaindersDatabase: AppDatabase
+  private lateinit var reminderDao: RemindersDao
+  private lateinit var remindersDatabase: AppDatabase
 
   @get:Rule
   var instantExecutorRule = InstantTaskExecutorRule()
@@ -39,74 +39,74 @@ class RoomDatabaseTest {
   fun createDb() {
     stopKoin()
     val context = ApplicationProvider.getApplicationContext<Context>()
-    remaindersDatabase = Room.inMemoryDatabaseBuilder(
+    remindersDatabase = Room.inMemoryDatabaseBuilder(
       context, AppDatabase::class.java
     ).allowMainThreadQueries().build()
-    remainderDao = remaindersDatabase.remindersDao()
+    reminderDao = remindersDatabase.remindersDao()
   }
 
 
   @After
   @Throws(IOException::class)
   fun closeDb() {
-    remaindersDatabase.close()
+    remindersDatabase.close()
   }
 
   @Test
   fun insertTaskAndGetById() = runBlockingTest {
     // GIVEN - Insert a task.
-    val remainder = TestModelUtils.getTestRemainder()
-    remainderDao.insertRemainder(remainder)
+    val reminder = TestModelUtils.getTestReminder()
+    reminderDao.insertReminder(reminder)
 
     // WHEN - Get the task by id from the database.
-    val loadedRemainder = remainderDao.getRemainderById(remainder.id)
+    val loadedReminder = reminderDao.getReminderById(reminder.id)
 
     // THEN - The loaded data contains the expected values.
-    assertThat(loadedRemainder as Reminder, notNullValue())
-    assertThat(loadedRemainder.id, `is`(remainder.id))
-    assertThat(loadedRemainder.title, `is`(remainder.title))
-    assertThat(loadedRemainder.description, `is`(remainder.description))
-    assertThat(loadedRemainder.latitude, `is`(remainder.latitude))
-    assertThat(loadedRemainder.longitude, `is`(remainder.longitude))
-    assertThat(loadedRemainder.place, `is`(remainder.place))
+    assertThat(loadedReminder as Reminder, notNullValue())
+    assertThat(loadedReminder.id, `is`(reminder.id))
+    assertThat(loadedReminder.title, `is`(reminder.title))
+    assertThat(loadedReminder.description, `is`(reminder.description))
+    assertThat(loadedReminder.latitude, `is`(reminder.latitude))
+    assertThat(loadedReminder.longitude, `is`(reminder.longitude))
+    assertThat(loadedReminder.place, `is`(reminder.place))
   }
 
 
   @Test
   @Throws(Exception::class)
-  fun saveRemainder_read_returnEqual() = runBlocking {
-    val remainder: Reminder = TestModelUtils.getTestRemainder()
-    remainderDao.insertRemainder(remainder)
-    val byPlaceId = remainderDao.getRemainderById(remainder.id)
-    assertThat(byPlaceId, equalTo(remainder))
+  fun saveReminder_read_returnEqual() = runBlocking {
+    val reminder: Reminder = TestModelUtils.getTestReminder()
+    reminderDao.insertReminder(reminder)
+    val byPlaceId = reminderDao.getReminderById(reminder.id)
+    assertThat(byPlaceId, equalTo(reminder))
   }
 
 
   @Test
   @Throws(Exception::class)
-  fun saveRemainder_readList_returnNotEmpty() = runBlockingTest {
-    val remainder: Reminder = TestModelUtils.getTestRemainder()
-    remainderDao.insertRemainder(remainder)
-    val remainders = remainderDao.getRemainders()
-    assertThat(remainders.isEmpty(), `is`(false))
+  fun saveReminder_readList_returnNotEmpty() = runBlockingTest {
+    val reminder: Reminder = TestModelUtils.getTestReminder()
+    reminderDao.insertReminder(reminder)
+    val reminders = reminderDao.getReminders()
+    assertThat(reminders.isEmpty(), `is`(false))
   }
 
 
   @Test
   @Throws(Exception::class)
-  fun deleteAllRemainders_should_return_empty() = runBlocking(Dispatchers.IO) {
-    val remainder: Reminder = TestModelUtils.getTestRemainder()
-    remainderDao.insertRemainder(remainder)
-    val deleted = remainderDao.deleteAllRemainders()
+  fun deleteAllReminders_should_return_empty() = runBlocking(Dispatchers.IO) {
+    val reminder: Reminder = TestModelUtils.getTestReminder()
+    reminderDao.insertReminder(reminder)
+    val deleted = reminderDao.deleteAllReminders()
     assertThat(deleted, `is`(1))
   }
 
   @Test
-  fun insertRemainderAndUpdateGetId() = runBlockingTest {
-    val remainder = TestModelUtils.getTestRemainder()
-    remainderDao.insertRemainder(remainder)
-    remainderDao.updateRemainder(remainder.copy(title = "Updated"))
-    val updatedRemainder = remainderDao.getRemainderById((remainder.id))
-    assertThat(updatedRemainder?.title, `is`("Updated"))
+  fun insertReminderAndUpdateGetId() = runBlockingTest {
+    val reminder = TestModelUtils.getTestReminder()
+    reminderDao.insertReminder(reminder)
+    reminderDao.updateReminder(reminder.copy(title = "Updated"))
+    val updatedReminder = reminderDao.getReminderById((reminder.id))
+    assertThat(updatedReminder?.title, `is`("Updated"))
   }
 }

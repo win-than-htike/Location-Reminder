@@ -18,7 +18,7 @@ class ReminderDetailViewModel constructor(repository: RemindersRepository) :
   val reminder: LiveData<Reminder>
     get() = _reminder
 
-  fun getRemainderByPlaceId(placeId: String) {
+  fun getReminderByPlaceId(placeId: String) {
     viewModelScope.launch {
       remindersRepository.getReminderById(placeId).let {
         if (it is Result.Success) {

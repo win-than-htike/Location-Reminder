@@ -26,35 +26,35 @@ class ReminderRepositoryTest {
   }
 
   @Test
-  fun saveRemainder_return_notEmptyList() = runBlockingTest {
-    reminderRepository.saveReminder(TestModelUtils.getTestRemainder())
+  fun saveReminder_return_notEmptyList() = runBlockingTest {
+    reminderRepository.saveReminder(TestModelUtils.getTestReminder())
     val list = reminderRepository.getReminders() as Result.Success<List<Reminder>>
     assertThat(list.data.isNotEmpty(), `is`(true))
   }
 
   @Test
-  fun saveRemainder_retrieveWithId_return_notNull() = runBlockingTest {
-    reminderRepository.saveReminder(TestModelUtils.getTestRemainder())
+  fun saveReminder_retrieveWithId_return_notNull() = runBlockingTest {
+    reminderRepository.saveReminder(TestModelUtils.getTestReminder())
     val list = reminderRepository.getReminderById("1")
     assertThat(list, `is`(notNullValue()))
   }
 
   @Test
-  fun saveRemainder_andDeleteRemainder_return_EmptyList() = runBlockingTest {
-    reminderRepository.saveReminder(TestModelUtils.getTestRemainder())
+  fun saveReminder_andDeleteReminder_return_EmptyList() = runBlockingTest {
+    reminderRepository.saveReminder(TestModelUtils.getTestReminder())
     val list = reminderRepository.getReminders() as Result.Success<List<Reminder>>
     assertThat(list.data.isEmpty(), `is`(false))
-    reminderRepository.deleteReminder(TestModelUtils.getTestRemainder())
+    reminderRepository.deleteReminder(TestModelUtils.getTestReminder())
     val savedList = reminderRepository.getReminders() as Result.Success<List<Reminder>>
     assertThat(savedList.data.isEmpty(), `is`(true))
   }
 
 
   @Test
-  fun returnNullForRemainderById_whenError() = runBlockingTest {
+  fun returnNullForReminderById_whenError() = runBlockingTest {
     fakeDataSource.setShouldReturnError(true)
-    val remainder = reminderRepository.getReminderById("1")
-    assertThat(remainder is Result.Error, `is`(true))
+    val reminder = reminderRepository.getReminderById("1")
+    assertThat(reminder is Result.Error, `is`(true))
   }
 
 }

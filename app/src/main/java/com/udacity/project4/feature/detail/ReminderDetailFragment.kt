@@ -34,10 +34,10 @@ class ReminderDetailFragment : Fragment() {
       lifecycleOwner = viewLifecycleOwner
     }
     val placeId = arguments?.getString(GeofenceUtils.GEOFENCE_EXTRA)
-    viewModel.getRemainderByPlaceId(placeId.orEmpty())
-    viewModel.reminder.observe(viewLifecycleOwner, { remainder ->
+    viewModel.getReminderByPlaceId(placeId.orEmpty())
+    viewModel.reminder.observe(viewLifecycleOwner, { reminder ->
       if(requireActivity() is AppCompatActivity)
-        (requireActivity() as AppCompatActivity).supportActionBar?.title = remainder.title
+        (requireActivity() as AppCompatActivity).supportActionBar?.title = reminder.title
     })
     return binding.root
   }

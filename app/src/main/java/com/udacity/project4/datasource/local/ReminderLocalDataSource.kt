@@ -11,21 +11,21 @@ class ReminderLocalDataSource constructor(private val dao: RemindersDao) :
   ReminderDataSource {
   override suspend fun saveReminder(reminder: Reminder) {
     withContext(Dispatchers.IO) {
-      dao.insertRemainder(reminder)
+      dao.insertReminder(reminder)
     }
   }
 
   override fun observeReminders(): LiveData<List<Reminder>> {
-    return dao.observeRemainders()
+    return dao.observeReminders()
   }
 
   override suspend fun deleteReminder(reminder: Reminder) {
-    dao.deleteRemainder(reminder)
+    dao.deleteReminder(reminder)
   }
 
   override suspend fun getReminderById(id: String) = withContext(Dispatchers.IO) {
     return@withContext try {
-      Result.Success(dao.getRemainderById(id)!!)
+      Result.Success(dao.getReminderById(id)!!)
     } catch (e: Exception) {
       Result.Error(e.localizedMessage)
     }
@@ -33,13 +33,13 @@ class ReminderLocalDataSource constructor(private val dao: RemindersDao) :
 
   override suspend fun getReminders() = withContext(Dispatchers.IO) {
     return@withContext try {
-      Result.Success(dao.getRemainders())
+      Result.Success(dao.getReminders())
     } catch (e: Exception) {
       Result.Error(e.localizedMessage)
     }
   }
 
   override suspend fun deleteAllReminder() {
-    dao.deleteAllRemainders()
+    dao.deleteAllReminders()
   }
 }

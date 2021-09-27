@@ -62,14 +62,14 @@
 
       <com.google.android.material.button.MaterialButton
           android:id="@+id/btnLocation"
-          style="@style/RemainderButton"
+          style="@style/ReminderButton"
           android:layout_width="match_parent"
           android:layout_height="56dp"
           android:layout_marginVertical="@dimen/spacing_medium"
           android:drawablePadding="@dimen/spacing_medium"
           android:gravity="center"
           android:paddingHorizontal="@dimen/spacing_medium"
-          android:text="@string/remainder_location"
+          android:text="@string/reminder_location"
           app:icon="@drawable/baseline_location_on_24"
           app:iconTint="@color/white"
           app:layout_constraintTop_toBottomOf="@+id/textFieldDescription" />
@@ -94,12 +94,12 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fabSaveRemainder"
+        android:id="@+id/fabSaveReminder"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/spacing_medium"
-        android:contentDescription="@string/floating_action_for_save_new_remainder"
+        android:contentDescription="@string/floating_action_for_save_new_reminder"
         android:src="@drawable/baseline_save_24"
         app:backgroundTint="@color/primaryColor" />
   </androidx.coordinatorlayout.widget.CoordinatorLayout>

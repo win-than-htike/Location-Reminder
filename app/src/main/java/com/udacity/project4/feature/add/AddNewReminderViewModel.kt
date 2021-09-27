@@ -14,11 +14,11 @@ import com.udacity.project4.utils.Event
 
 class AddNewReminderViewModel constructor(
   val app: Application,
-  remainderRepository: RemindersRepository
+  reminderRepository: RemindersRepository
 ) :
   AndroidViewModel(app) {
 
-  private val repository = remainderRepository
+  private val repository = reminderRepository
 
   private val _selectedPOI = MutableLiveData<Point?>()
 
@@ -27,7 +27,7 @@ class AddNewReminderViewModel constructor(
 
   var title = MutableLiveData<String>()
   var description = MutableLiveData<String>()
-  var savedRemainder: Reminder? = null
+  var savedReminder: Reminder? = null
 
 
   fun updatePOI(data: Point) {
@@ -35,10 +35,10 @@ class AddNewReminderViewModel constructor(
   }
 
 
-  private val _savedRemainderEvent = MutableLiveData<Event<Int>?>()
+  private val _savedReminderEvent = MutableLiveData<Event<Int>?>()
 
-  val savedRemainderEvent: LiveData<Event<Int>?>
-    get() = _savedRemainderEvent
+  val savedReminderEvent: LiveData<Event<Int>?>
+    get() = _savedReminderEvent
 
 
   val poi: LiveData<Point?>
@@ -65,29 +65,29 @@ class AddNewReminderViewModel constructor(
       .isNotEmpty() && _selectedPOI.value != null
   }
 
-  fun addNewRemainder() {
+  fun addNewReminder() {
     if (isValidToSave()) {
-      val remainder = Reminder(
+      val reminder = Reminder(
         title = title.value.orEmpty(),
         description = description.value.orEmpty(),
         longitude = _selectedPOI.value?.latLng?.longitude ?: 0.0,
         latitude = _selectedPOI.value?.latLng?.latitude ?: 0.0,
         place = _selectedPOI.value?.address?.featureName.orEmpty(),
       )
-      savedRemainder = remainder
+      savedReminder = reminder
       viewModelScope.launch {
-        repository.saveReminder(remainder)
+        repository.saveReminder(reminder)
         title.value = ""
         description.value = ""
-        savedRemainder()
+        savedReminder()
       }
     }
   }
 
 
-  fun savedRemainder() {
-    _savedRemainderEvent.value = Event(R.string.text_add_new_remainder_sucess)
-    toastInt.value = Event(R.string.text_add_new_remainder_sucess)
+  fun savedReminder() {
+    _savedReminderEvent.value = Event(R.string.text_add_new_reminder_sucess)
+    toastInt.value = Event(R.string.text_add_new_reminder_sucess)
   }
 
 
@@ -97,7 +97,7 @@ class AddNewReminderViewModel constructor(
     _selectedPOI.value = null
     showSnackBarInt.value = null
     toastInt.value = null
-    _savedRemainderEvent.value = null
+    _savedReminderEvent.value = null
   }
 
 }

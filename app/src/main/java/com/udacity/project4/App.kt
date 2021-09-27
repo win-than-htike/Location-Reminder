@@ -28,7 +28,7 @@ class App : Application() {
     val myModule = module {
       single<ReminderDataSource> { ReminderLocalDataSource(get()) }
       single<RemindersRepository> { RemindersRepositoryImpl(get() as ReminderDataSource) }
-      single { DB.createRemainderDatabase(this@App) }
+      single { DB.createReminderDatabase(this@App) }
       viewModel {
         RemindersViewModel(
           get() as RemindersRepository,

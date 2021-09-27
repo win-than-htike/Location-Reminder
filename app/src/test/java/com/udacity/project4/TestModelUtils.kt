@@ -3,7 +3,7 @@ package com.udacity.project4
 import com.udacity.project4.model.Reminder
 
 object TestModelUtils {
-  fun getTestRemainder(): Reminder {
+  fun getTestReminder(): Reminder {
     return Reminder(
       "1",
       "title",

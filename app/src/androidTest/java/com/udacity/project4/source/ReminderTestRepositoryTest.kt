@@ -48,7 +48,7 @@ class ReminderTestRepositoryTest {
   }
 
   @Test
-  fun saveRemainderSuccess() = runBlocking {
+  fun saveReminderSuccess() = runBlocking {
     reminderRepository.saveReminder(TestModelUtils.getTestReminder())
     val result = reminderRepository.getReminderById(TestModelUtils.getTestReminder().id)
     assertThat(result is Result.Success, `is`(true))
@@ -62,7 +62,7 @@ class ReminderTestRepositoryTest {
 
 
   @Test
-  fun saveRemainder_return_notEmptyList() = runBlocking {
+  fun saveReminder_return_notEmptyList() = runBlocking {
     reminderRepository.saveReminder(TestModelUtils.getTestReminder())
     val result = reminderRepository.getReminders()
     val list = reminderRepository.getReminders() as Result.Success<List<Reminder>>
@@ -70,14 +70,14 @@ class ReminderTestRepositoryTest {
   }
 
   @Test
-  fun saveRemainder_retrieveWithId_return_notNull() = runBlocking {
+  fun saveReminder_retrieveWithId_return_notNull() = runBlocking {
     reminderRepository.saveReminder(TestModelUtils.getTestReminder())
     val list = reminderRepository.getReminderById("1")
     assertThat(list, `is`(notNullValue()))
   }
 
   @Test
-  fun saveRemainder_andDeleteRemainder_return_EmptyList() = runBlocking {
+  fun saveReminder_andDeleteReminder_return_EmptyList() = runBlocking {
     reminderRepository.saveReminder(TestModelUtils.getTestReminder())
     val list = reminderRepository.getReminders() as Result.Success<List<Reminder>>
     assertThat(list.data.isNotEmpty(), `is`(true))

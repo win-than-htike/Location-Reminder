@@ -47,7 +47,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
   private lateinit var locationHandler: LocationHandler
 
   private val viewModel: MapViewModel by inject()
-  private val addRemainderViewModel: AddNewReminderViewModel by inject()
+  private val addReminderViewModel: AddNewReminderViewModel by inject()
 
   override fun onCreateView(
     inflater: LayoutInflater,
@@ -60,7 +60,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
       lifecycleOwner = viewLifecycleOwner
       btnSave.setOnClickListener {
         if (viewModel.selectPoi.value != null) {
-          addRemainderViewModel.updatePOI(viewModel.selectPoi.value!!)
+          addReminderViewModel.updatePOI(viewModel.selectPoi.value!!)
           findNavController().popBackStack()
         }
       }

@@ -23,7 +23,7 @@
 
     <style name="Theme.LocationReminder.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
-    <style name="FirebaseUI.RemainderUITheme">
+    <style name="FirebaseUI.ReminderUITheme">
         <item name="title">@string/login</item>
         <item name="colorPrimary">@color/primaryColor</item>
         <item name="colorPrimaryDark">@color/primaryDarkColor</item>

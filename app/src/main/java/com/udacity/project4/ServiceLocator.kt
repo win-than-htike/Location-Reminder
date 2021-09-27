@@ -36,7 +36,7 @@ object ServiceLocator {
   private fun createDataBase(context: Context): AppDatabase {
     val result = Room.databaseBuilder(
       context.applicationContext,
-      AppDatabase::class.java, "Remainders.db"
+      AppDatabase::class.java, "Reminders.db"
     )
       .fallbackToDestructiveMigration()
       .build()

@@ -27,7 +27,7 @@
         tools:layout_editor_absoluteY="0dp" />
 
     <com.google.android.material.button.MaterialButton
-        style="@style/RemainderButton"
+        style="@style/ReminderButton"
         android:layout_width="match_parent"
         android:id="@+id/btnSave"
         android:layout_height="56dp"

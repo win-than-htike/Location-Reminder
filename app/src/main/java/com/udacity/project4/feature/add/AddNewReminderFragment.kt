@@ -38,7 +38,7 @@ class AddNewReminderFragment : Fragment() {
   companion object {
     const val SELECTED_POI = "SELECTED_POI"
     internal const val ACTION_GEOFENCE_EVENT =
-      "AddNewRemainderFragment.action.ACTION_GEOFENCE_EVENT"
+      "AddNewReminderFragment.action.ACTION_GEOFENCE_EVENT"
   }
 
   val viewModel: AddNewReminderViewModel by inject()
@@ -79,13 +79,13 @@ class AddNewReminderFragment : Fragment() {
 //            }
 //        }
 
-    viewModel.savedRemainderEvent.observe(viewLifecycleOwner, {
+    viewModel.savedReminderEvent.observe(viewLifecycleOwner, {
       if (it != null) {
         if (requireActivity() is MainActivity) {
           (requireActivity() as MainActivity).checkPermissionsAndStartGeofencing(
             onPermissionDenied = {},
             onPermissionGranted = {
-              binding.root.showSnackBar(getString(R.string.text_saved_remainder))
+              binding.root.showSnackBar(getString(R.string.text_saved_reminder))
               addGeofence()
             })
         }
@@ -120,10 +120,10 @@ class AddNewReminderFragment : Fragment() {
   private fun setupActions() {
     with(binding) {
       btnLocation.setOnClickListener {
-        findNavController().safeNavigate(AddNewReminderFragmentDirections.actionAddNewRemainderToMapFragment())
+        findNavController().safeNavigate(AddNewReminderFragmentDirections.actionAddNewReminderToMapFragment())
       }
-      fabSaveRemainder.setOnClickListener {
-        viewModel.addNewRemainder()
+      fabSaveReminder.setOnClickListener {
+        viewModel.addNewReminder()
       }
     }
   }
@@ -133,7 +133,7 @@ class AddNewReminderFragment : Fragment() {
     val geofenceData = viewModel.poi.value
     geofenceData?.let {
       val geofence = Geofence.Builder()
-        .setRequestId(viewModel.savedRemainder?.id)
+        .setRequestId(viewModel.savedReminder?.id)
         .setCircularRegion(
           geofenceData.latLng.latitude,
           geofenceData.latLng.longitude,
@@ -151,7 +151,7 @@ class AddNewReminderFragment : Fragment() {
       geofencingClient.addGeofences(geofencingRequest, geofencePendingIntent)?.run {
         addOnSuccessListener {
           binding.root.showSnackBar(getString(R.string.geofences_added))
-          goToRemainders()
+          goToReminders()
           Timber.d("Add Geofence ${geofence.requestId}")
         }
         addOnFailureListener {
@@ -164,7 +164,7 @@ class AddNewReminderFragment : Fragment() {
     }
   }
 
-  private fun goToRemainders() {
+  private fun goToReminders() {
     findNavController().popBackStack()
   }
 

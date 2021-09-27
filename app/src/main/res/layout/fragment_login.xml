@@ -45,7 +45,7 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnLogin"
-        style="@style/RemainderButton"
+        style="@style/ReminderButton"
         android:layout_marginHorizontal="@dimen/spacing_medium"
         android:layout_marginVertical="@dimen/spacing_medium"
         android:text="@{vm.isLoggedIn ?  @string/logout : @string/login}"

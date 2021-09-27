@@ -7,7 +7,7 @@ import com.udacity.project4.utils.Result
 
 class FakeDataSource : ReminderDataSource {
 
-  private var remainders: MutableList<Reminder> = mutableListOf()
+  private var reminders: MutableList<Reminder> = mutableListOf()
   private var shouldReturnError = false
 
   fun setShouldReturnError(shouldReturn: Boolean) {
@@ -15,7 +15,7 @@ class FakeDataSource : ReminderDataSource {
   }
 
   override suspend fun saveReminder(reminder: Reminder) {
-    remainders.add(reminder)
+    reminders.add(reminder)
   }
 
   override fun observeReminders(): LiveData<List<Reminder>> {
@@ -23,29 +23,29 @@ class FakeDataSource : ReminderDataSource {
   }
 
   override suspend fun deleteReminder(reminder: Reminder) {
-    remainders.remove(reminder)
+    reminders.remove(reminder)
   }
 
   override suspend fun getReminderById(id: String): Result<Reminder> {
     if (shouldReturnError) {
-      return Result.Error("no remainder found exception")
+      return Result.Error("no reminder found exception")
     }
-    val remainder = remainders.findLast { id == it.id }
-    return if (remainder != null) {
-      Result.Success(remainder)
+    val reminder = reminders.findLast { id == it.id }
+    return if (reminder != null) {
+      Result.Success(reminder)
     } else {
-      Result.Error("no remainder found")
+      Result.Error("no reminder found")
     }
   }
 
   override suspend fun getReminders(): Result<List<Reminder>> {
     if (shouldReturnError) {
-      return Result.Error(message = "no remainder found exception")
+      return Result.Error(message = "no reminder found exception")
     }
-    return Result.Success(remainders.toList())
+    return Result.Success(reminders.toList())
   }
 
   override suspend fun deleteAllReminder() {
-    remainders.clear()
+    reminders.clear()
   }
 }

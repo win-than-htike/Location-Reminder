@@ -61,7 +61,7 @@ class MainActivity : AppCompatActivity() {
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navController = navHostFragment.navController
         val appBarConfiguration =
-            AppBarConfiguration.Builder(R.id.remaindersFragment, R.id.loginFragment)
+            AppBarConfiguration.Builder(R.id.remindersFragment, R.id.loginFragment)
                 .build()
         setupActionBarWithNavController(navController, appBarConfiguration)
         createChannel(this)

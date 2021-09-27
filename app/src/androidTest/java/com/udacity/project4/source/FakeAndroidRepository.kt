@@ -8,33 +8,33 @@ import com.udacity.project4.utils.Result
 
 class FakeAndroidRepository : RemindersRepository {
 
-  private var remainders: MutableList<Reminder> = mutableListOf()
-  private var remainderLiveData = MutableLiveData<List<Reminder>>()
+  private var reminders: MutableList<Reminder> = mutableListOf()
+  private var reminderLiveData = MutableLiveData<List<Reminder>>()
 
 
   override fun observeReminders(): LiveData<List<Reminder>> {
-    return remainderLiveData
+    return reminderLiveData
   }
 
   override suspend fun saveReminder(reminder: Reminder) {
-    remainders.add(reminder)
-    remainderLiveData.postValue(remainders)
+    reminders.add(reminder)
+    reminderLiveData.postValue(reminders)
   }
 
   override suspend fun deleteReminder(reminder: Reminder) {
-    remainders.remove(reminder)
+    reminders.remove(reminder)
   }
 
   override suspend fun getReminderById(id: String): Result<Reminder> {
-    val remainder = remainders.findLast { it.id == id }
-    return if (remainder != null) {
-      Result.Success(remainder)
+    val reminder = reminders.findLast { it.id == id }
+    return if (reminder != null) {
+      Result.Success(reminder)
     } else {
-      Result.Error("no remainder found")
+      Result.Error("no reminder found")
     }
   }
 
   override suspend fun getReminders(): Result<List<Reminder>> {
-    return Result.Success(remainders)
+    return Result.Success(reminders)
   }
 }

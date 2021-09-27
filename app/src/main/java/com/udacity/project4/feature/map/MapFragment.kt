@@ -28,6 +28,7 @@ import com.udacity.project4.databinding.FragmentMapBinding
 import com.udacity.project4.feature.add.AddNewRemainderViewModel
 import com.udacity.project4.model.Point
 import com.udacity.project4.utils.LocationHandler
+import com.udacity.project4.utils.showSnackBar
 import org.koin.android.ext.android.inject
 import timber.log.Timber
 import java.util.Locale

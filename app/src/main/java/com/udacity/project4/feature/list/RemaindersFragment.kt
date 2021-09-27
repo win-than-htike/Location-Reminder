@@ -16,6 +16,7 @@ import com.udacity.project4.databinding.FragmentRemaindersBinding
 import com.udacity.project4.model.Remainder
 import com.udacity.project4.utils.GeofenceUtils
 import com.udacity.project4.utils.safeNavigate
+import com.udacity.project4.utils.showSnackBar
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**

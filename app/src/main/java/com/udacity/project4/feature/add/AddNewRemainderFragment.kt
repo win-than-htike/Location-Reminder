@@ -23,6 +23,8 @@ import com.udacity.project4.R
 import com.udacity.project4.databinding.FragmentAddNewRemainderBinding
 import com.udacity.project4.geofence.GeofenceBroadcastReceiver
 import com.udacity.project4.utils.GeofenceUtils
+import com.udacity.project4.utils.safeNavigate
+import com.udacity.project4.utils.showSnackBar
 import org.koin.android.ext.android.inject
 import timber.log.Timber
 

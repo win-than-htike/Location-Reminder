@@ -12,7 +12,7 @@ import kotlinx.coroutines.test.runBlockingTest
 import com.udacity.project4.TestModelUtils
 import com.udacity.project4.db.AppDatabase
 import com.udacity.project4.db.RemindersDao
-import com.udacity.project4.model.Remainder
+import com.udacity.project4.model.Reminder
 import org.hamcrest.CoreMatchers.`is`
 import org.hamcrest.CoreMatchers.equalTo
 import org.hamcrest.MatcherAssert.assertThat
@@ -42,7 +42,7 @@ class RoomDatabaseTest {
     remaindersDatabase = Room.inMemoryDatabaseBuilder(
       context, AppDatabase::class.java
     ).allowMainThreadQueries().build()
-    remainderDao = remaindersDatabase.remaindersDao()
+    remainderDao = remaindersDatabase.remindersDao()
   }
 
 
@@ -62,7 +62,7 @@ class RoomDatabaseTest {
     val loadedRemainder = remainderDao.getRemainderById(remainder.id)
 
     // THEN - The loaded data contains the expected values.
-    assertThat(loadedRemainder as Remainder, notNullValue())
+    assertThat(loadedRemainder as Reminder, notNullValue())
     assertThat(loadedRemainder.id, `is`(remainder.id))
     assertThat(loadedRemainder.title, `is`(remainder.title))
     assertThat(loadedRemainder.description, `is`(remainder.description))
@@ -75,7 +75,7 @@ class RoomDatabaseTest {
   @Test
   @Throws(Exception::class)
   fun saveRemainder_read_returnEqual() = runBlocking {
-    val remainder: Remainder = TestModelUtils.getTestRemainder()
+    val remainder: Reminder = TestModelUtils.getTestRemainder()
     remainderDao.insertRemainder(remainder)
     val byPlaceId = remainderDao.getRemainderById(remainder.id)
     assertThat(byPlaceId, equalTo(remainder))
@@ -85,7 +85,7 @@ class RoomDatabaseTest {
   @Test
   @Throws(Exception::class)
   fun saveRemainder_readList_returnNotEmpty() = runBlockingTest {
-    val remainder: Remainder = TestModelUtils.getTestRemainder()
+    val remainder: Reminder = TestModelUtils.getTestRemainder()
     remainderDao.insertRemainder(remainder)
     val remainders = remainderDao.getRemainders()
     assertThat(remainders.isEmpty(), `is`(false))
@@ -95,7 +95,7 @@ class RoomDatabaseTest {
   @Test
   @Throws(Exception::class)
   fun deleteAllRemainders_should_return_empty() = runBlocking(Dispatchers.IO) {
-    val remainder: Remainder = TestModelUtils.getTestRemainder()
+    val remainder: Reminder = TestModelUtils.getTestRemainder()
     remainderDao.insertRemainder(remainder)
     val deleted = remainderDao.deleteAllRemainders()
     assertThat(deleted, `is`(1))

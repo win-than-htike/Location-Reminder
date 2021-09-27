@@ -13,7 +13,7 @@ import androidx.core.app.NotificationCompat
 import androidx.navigation.NavDeepLinkBuilder
 import com.udacity.project4.MainActivity
 import com.udacity.project4.R
-import com.udacity.project4.model.Remainder
+import com.udacity.project4.model.Reminder
 import java.util.Date
 
 fun createChannel(context: Context) {
@@ -50,7 +50,7 @@ fun pendingIntent(context: Context, placeId: String): PendingIntent {
     .createPendingIntent()
 }
 
-fun NotificationManager.sendGeofenceEnteredNotification(context: Context, remainder: Remainder) {
+fun NotificationManager.sendGeofenceEnteredNotification(context: Context, remainder: Reminder) {
   val notiId = Date().time.toInt()
   val contentIntent = Intent(context, MainActivity::class.java)
   contentIntent.putExtra(GeofenceUtils.GEOFENCE_EXTRA, remainder.id)

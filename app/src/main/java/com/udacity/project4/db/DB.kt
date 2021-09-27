@@ -7,7 +7,7 @@ object DB {
   fun createRemainderDatabase(context: Context): RemindersDao {
     return Room.databaseBuilder(
       context.applicationContext,
-      AppDatabase::class.java, "Remainders.db"
-    ).build().remaindersDao()
+      AppDatabase::class.java, "Reminders.db"
+    ).build().remindersDao()
   }
 }

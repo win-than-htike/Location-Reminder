@@ -12,8 +12,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.udacity.project4.R
-import com.udacity.project4.databinding.FragmentRemaindersBinding
-import com.udacity.project4.model.Remainder
+import com.udacity.project4.databinding.FragmentRemindersBinding
+import com.udacity.project4.model.Reminder
 import com.udacity.project4.utils.GeofenceUtils
 import com.udacity.project4.utils.safeNavigate
 import com.udacity.project4.utils.showSnackBar
@@ -26,9 +26,9 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
  */
 private const val TAG = "RemindersFragment"
 
-class RemaindersFragment : Fragment(), RemainderAdapterCallback {
+class RemindersFragment : Fragment(), RemainderAdapterCallback {
 
-  private lateinit var binding: FragmentRemaindersBinding
+  private lateinit var binding: FragmentRemindersBinding
 
   val viewModel: RemindersViewModel by viewModel()
 
@@ -39,12 +39,12 @@ class RemaindersFragment : Fragment(), RemainderAdapterCallback {
     savedInstanceState: Bundle?
   ): View? {
     // Inflate the layout for this fragment
-    binding = DataBindingUtil.inflate(inflater, R.layout.fragment_remainders, container, false)
+    binding = DataBindingUtil.inflate(inflater, R.layout.fragment_reminders, container, false)
     adapter = RemainderAdapter(this)
     binding.apply {
       vm = viewModel
       lifecycleOwner = viewLifecycleOwner
-      adapter = this@RemaindersFragment.adapter
+      adapter = this@RemindersFragment.adapter
     }
     binding.fabAddRemainder.setOnClickListener {
       findNavController().safeNavigate(RemaindersFragmentDirections.actionRemaindersFragmentToAddNewRemainder())
@@ -97,11 +97,11 @@ class RemaindersFragment : Fragment(), RemainderAdapterCallback {
   }
 
 
-  override fun itemDelete(remainder: Remainder) {
+  override fun itemDelete(remainder: Reminder) {
     viewModel.deleteRemainder(remainder)
   }
 
-  override fun onItemClick(remainder: Remainder) {
+  override fun onItemClick(remainder: Reminder) {
     val bundle = Bundle()
     bundle.putString(GeofenceUtils.GEOFENCE_EXTRA, remainder.id)
     findNavController().safeNavigate(

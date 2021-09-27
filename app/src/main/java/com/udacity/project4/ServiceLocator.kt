@@ -30,7 +30,7 @@ object ServiceLocator {
 
   private fun createTaskLocalDataSource(context: Context): ReminderLocalDataSource {
     val database = database ?: createDataBase(context)
-    return ReminderLocalDataSource(database.remaindersDao())
+    return ReminderLocalDataSource(database.remindersDao())
   }
 
   private fun createDataBase(context: Context): AppDatabase {

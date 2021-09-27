@@ -1,10 +1,10 @@
 package com.udacity.project4
 
-import com.udacity.project4.model.Remainder
+import com.udacity.project4.model.Reminder
 
 object TestModelUtils {
-  fun getTestRemainder(): Remainder {
-    return Remainder(
+  fun getTestReminder(): Reminder {
+    return Reminder(
       "1",
       "title",
       "description",

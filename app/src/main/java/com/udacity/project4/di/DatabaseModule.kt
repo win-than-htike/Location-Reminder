@@ -13,6 +13,6 @@ val databaseModule = module {
   }
 
   single {
-    (get() as AppDatabase).remaindersDao()
+    (get() as AppDatabase).remindersDao()
   }
 }

@@ -11,7 +11,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import com.udacity.project4.R
 import com.udacity.project4.base.BaseViewModel
-import com.udacity.project4.model.Remainder
+import com.udacity.project4.model.Reminder
 import com.udacity.project4.repo.RemindersRepository
 import com.udacity.project4.utils.Event
 import com.udacity.project4.utils.Result.Error
@@ -19,15 +19,15 @@ import com.udacity.project4.utils.Result.Success
 
 class RemindersViewModel constructor(private val repository: RemindersRepository) :
   BaseViewModel() {
-  val remindersList = MutableLiveData<List<Remainder>>()
+  val remindersList = MutableLiveData<List<Reminder>>()
   private val _logoutEvent = MutableLiveData<Event<Unit>>()
   val loading = MutableLiveData<Boolean>(false)
 
 
-  private val _remainders: LiveData<List<Remainder>> =
-    repository.observeRemainders()
+  private val _remainders: LiveData<List<Reminder>> =
+    repository.observeReminders()
 
-  val remainders: LiveData<List<Remainder>>
+  val remainders: LiveData<List<Reminder>>
     get() = _remainders
 
 
@@ -54,9 +54,9 @@ class RemindersViewModel constructor(private val repository: RemindersRepository
       .addOnSuccessListener { logoutEvent() }
   }
 
-  fun deleteRemainder(remainder: Remainder) {
+  fun deleteRemainder(remainder: Reminder) {
     CoroutineScope(Dispatchers.IO).launch {
-      repository.deleteRemainder(remainder)
+      repository.deleteReminder(remainder)
     }
     showSnackBarInt.value = Event(R.string.remainder_deleted)
     loadReminders()
@@ -67,15 +67,15 @@ class RemindersViewModel constructor(private val repository: RemindersRepository
     loading.value = true
     viewModelScope.launch {
       //interacting with the dataSource has to be through a coroutine
-      val result = repository.getRemainders()
+      val result = repository.getReminders()
       loading.postValue(false)
       when (result) {
         is Success<*> -> {
-          val dataList = ArrayList<Remainder>()
+          val dataList = ArrayList<Reminder>()
           @Suppress("UNCHECKED_CAST")
-          dataList.addAll((result.data as List<Remainder>).map { reminder ->
+          dataList.addAll((result.data as List<Reminder>).map { reminder ->
             //map the reminder data from the DB to the be ready to be displayed on the UI
-            Remainder(
+            Reminder(
               title = reminder.title,
               description = reminder.description,
               latitude = reminder.latitude,

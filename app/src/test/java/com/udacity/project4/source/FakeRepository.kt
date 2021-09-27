@@ -2,14 +2,14 @@ package com.udacity.project4.source
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.udacity.project4.model.Remainder
+import com.udacity.project4.model.Reminder
 import com.udacity.project4.repo.RemindersRepository
 import com.udacity.project4.utils.Result
 
 class FakeRepository : RemindersRepository {
 
-  private var remainders: MutableList<Remainder> = mutableListOf()
-  private var remainderLiveData = MutableLiveData<List<Remainder>>()
+  private var reminders: MutableList<Reminder> = mutableListOf()
+  private var reminderLiveData = MutableLiveData<List<Reminder>>()
 
   private var shouldReturnError = false
 
@@ -17,24 +17,24 @@ class FakeRepository : RemindersRepository {
     this.shouldReturnError = shouldReturn
   }
 
-  override fun observeRemainders(): LiveData<List<Remainder>> {
-    return remainderLiveData
+  override fun observeReminders(): LiveData<List<Reminder>> {
+    return reminderLiveData
   }
 
-  override suspend fun saveReminder(remainder: Remainder) {
-    remainders.add(remainder)
-    remainderLiveData.value = remainders
+  override suspend fun saveReminder(reminder: Reminder) {
+    reminders.add(reminder)
+    reminderLiveData.value = reminders
   }
 
-  override suspend fun deleteRemainder(remainder: Remainder) {
-    remainders.remove(remainder)
+  override suspend fun deleteReminder(reminder: Reminder) {
+    reminders.remove(reminder)
   }
 
-  override suspend fun getRemainderById(id: String): Result<Remainder> {
+  override suspend fun getReminderById(id: String): Result<Reminder> {
     if (shouldReturnError) {
       return Result.Error("no remainder found exception")
     }
-    val remainder = remainders.find { it.id == id }
+    val remainder = reminders.find { it.id == id }
     return if(remainder!=null){
       Result.Success(remainder)
     }else{
@@ -42,11 +42,11 @@ class FakeRepository : RemindersRepository {
     }
   }
 
-  override suspend fun getRemainders(): Result<List<Remainder>> {
+  override suspend fun getReminders(): Result<List<Reminder>> {
     return if (shouldReturnError) {
       Result.Error("No remainder found exception")
     } else {
-      Result.Success(remainders)
+      Result.Success(reminders)
     }
   }
 

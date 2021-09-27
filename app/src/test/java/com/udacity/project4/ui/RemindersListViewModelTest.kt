@@ -6,7 +6,7 @@ import kotlinx.coroutines.test.runBlockingTest
 import com.udacity.project4.MainCoroutineRule
 import com.udacity.project4.feature.list.RemindersViewModel
 import com.udacity.project4.getOrAwaitValue
-import com.udacity.project4.model.Remainder
+import com.udacity.project4.model.Reminder
 import com.udacity.project4.source.FakeRepository
 import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.Matchers.*
@@ -39,7 +39,7 @@ class RemindersListViewModelTest {
   @Test
   fun checkRemainders_is_return_false() = runBlockingTest {
     fakeRepository.saveReminder(
-      Remainder(
+      Reminder(
         "1",
         "title",
         "description",
@@ -64,7 +64,7 @@ class RemindersListViewModelTest {
   @Test
   fun returnNullForRemainderById_whenNull() = runBlockingTest {
     fakeRepository.setShouldReturnError(true)
-    val remainder = fakeRepository.getRemainderById("1")
+    val remainder = fakeRepository.getReminderById("1")
     assertThat(remainder is Result.Error, `is`(true))
   }
 

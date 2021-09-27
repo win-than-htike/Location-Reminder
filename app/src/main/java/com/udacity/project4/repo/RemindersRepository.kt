@@ -1,19 +1,19 @@
 package com.udacity.project4.repo
 
 import androidx.lifecycle.LiveData
-import com.udacity.project4.model.Remainder
+import com.udacity.project4.model.Reminder
 import com.udacity.project4.utils.Result
 
 interface RemindersRepository {
 
-    fun observeRemainders(): LiveData<List<Remainder>>
+    fun observeReminders(): LiveData<List<Reminder>>
 
-    suspend fun saveReminder(remainder: Remainder)
+    suspend fun saveReminder(reminder: Reminder)
 
-    suspend fun deleteRemainder(remainder: Remainder)
+    suspend fun deleteReminder(reminder: Reminder)
 
-    suspend fun getRemainderById(id: String): Result<Remainder>
+    suspend fun getReminderById(id: String): Result<Reminder>
 
-    suspend fun getRemainders(): Result<List<Remainder>>
+    suspend fun getReminders(): Result<List<Reminder>>
 
 }

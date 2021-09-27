@@ -8,7 +8,7 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import com.udacity.project4.R
 import com.udacity.project4.model.Point
-import com.udacity.project4.model.Remainder
+import com.udacity.project4.model.Reminder
 import com.udacity.project4.repo.RemindersRepository
 import com.udacity.project4.utils.Event
 
@@ -27,7 +27,7 @@ class AddNewReminderViewModel constructor(
 
   var title = MutableLiveData<String>()
   var description = MutableLiveData<String>()
-  var savedRemainder: Remainder? = null
+  var savedRemainder: Reminder? = null
 
 
   fun updatePOI(data: Point) {
@@ -67,7 +67,7 @@ class AddNewReminderViewModel constructor(
 
   fun addNewRemainder() {
     if (isValidToSave()) {
-      val remainder = Remainder(
+      val remainder = Reminder(
         title = title.value.orEmpty(),
         description = description.value.orEmpty(),
         longitude = _selectedPOI.value?.latLng?.longitude ?: 0.0,

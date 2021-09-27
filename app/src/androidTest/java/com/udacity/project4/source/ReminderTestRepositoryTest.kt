@@ -16,7 +16,7 @@ import androidx.test.filters.MediumTest
 import com.udacity.project4.TestModelUtils
 import com.udacity.project4.datasource.local.ReminderLocalDataSource
 import com.udacity.project4.db.AppDatabase
-import com.udacity.project4.model.Remainder
+import com.udacity.project4.model.Reminder
 import com.udacity.project4.repo.RemindersRepository
 import com.udacity.project4.repo.RemindersRepositoryImpl
 import com.udacity.project4.utils.MainCoroutineRule
@@ -27,7 +27,7 @@ import com.udacity.project4.utils.Result
 @ExperimentalCoroutinesApi
 class ReminderTestRepositoryTest {
 
-  private lateinit var remainderRepository: RemindersRepository
+  private lateinit var reminderRepository: RemindersRepository
   private lateinit var database: AppDatabase
 
   @get:Rule
@@ -43,17 +43,17 @@ class ReminderTestRepositoryTest {
       AppDatabase::class.java
     ).allowMainThreadQueries().build()
 
-    val dataSource = ReminderLocalDataSource(database.remaindersDao())
-    remainderRepository = RemindersRepositoryImpl(dataSource)
+    val dataSource = ReminderLocalDataSource(database.remindersDao())
+    reminderRepository = RemindersRepositoryImpl(dataSource)
   }
 
   @Test
   fun saveRemainderSuccess() = runBlocking {
-    remainderRepository.saveReminder(TestModelUtils.getTestRemainder())
-    val result = remainderRepository.getRemainderById(TestModelUtils.getTestRemainder().id)
+    reminderRepository.saveReminder(TestModelUtils.getTestReminder())
+    val result = reminderRepository.getReminderById(TestModelUtils.getTestReminder().id)
     assertThat(result is Result.Success, `is`(true))
     result as Result.Success
-    assertThat(result.data.id, `is`(TestModelUtils.getTestRemainder().id))
+    assertThat(result.data.id, `is`(TestModelUtils.getTestReminder().id))
     assertThat(result.data.title, `is`(notNullValue()))
     assertThat(result.data.description, `is`(notNullValue()))
     assertThat(result.data.latitude, `is`(notNullValue()))
@@ -63,26 +63,26 @@ class ReminderTestRepositoryTest {
 
   @Test
   fun saveRemainder_return_notEmptyList() = runBlocking {
-    remainderRepository.saveReminder(TestModelUtils.getTestRemainder())
-    val result = remainderRepository.getRemainders()
-    val list = remainderRepository.getRemainders() as Result.Success<List<Remainder>>
+    reminderRepository.saveReminder(TestModelUtils.getTestReminder())
+    val result = reminderRepository.getReminders()
+    val list = reminderRepository.getReminders() as Result.Success<List<Reminder>>
     assertThat(list.data.isNotEmpty(), `is`(true))
   }
 
   @Test
   fun saveRemainder_retrieveWithId_return_notNull() = runBlocking {
-    remainderRepository.saveReminder(TestModelUtils.getTestRemainder())
-    val list = remainderRepository.getRemainderById("1")
+    reminderRepository.saveReminder(TestModelUtils.getTestReminder())
+    val list = reminderRepository.getReminderById("1")
     assertThat(list, `is`(notNullValue()))
   }
 
   @Test
   fun saveRemainder_andDeleteRemainder_return_EmptyList() = runBlocking {
-    remainderRepository.saveReminder(TestModelUtils.getTestRemainder())
-    val list = remainderRepository.getRemainders() as Result.Success<List<Remainder>>
+    reminderRepository.saveReminder(TestModelUtils.getTestReminder())
+    val list = reminderRepository.getReminders() as Result.Success<List<Reminder>>
     assertThat(list.data.isNotEmpty(), `is`(true))
-    remainderRepository.deleteRemainder(TestModelUtils.getTestRemainder())
-    val savedList = remainderRepository.getRemainders() as Result.Success<List<Remainder>>
+    reminderRepository.deleteReminder(TestModelUtils.getTestReminder())
+    val savedList = reminderRepository.getReminders() as Result.Success<List<Reminder>>
     assertThat(savedList.data.isEmpty(), `is`(true))
   }
 }

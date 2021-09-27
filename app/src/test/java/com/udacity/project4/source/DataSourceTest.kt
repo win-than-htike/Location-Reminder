@@ -1,7 +1,7 @@
 package com.udacity.project4.source
 
 import com.udacity.project4.TestModelUtils
-import com.udacity.project4.model.Remainder
+import com.udacity.project4.model.Reminder
 import com.udacity.project4.utils.Result
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
@@ -24,8 +24,8 @@ class DataSourceTest {
 
   @Test
   fun addRemainderAndRetrieve_listNotEmpty() = runBlockingTest {
-    dataSource.saveRemainder(TestModelUtils.getTestRemainder())
-    val list = dataSource.getRemainders() as Result.Success<List<Remainder>>
+    dataSource.saveReminder(TestModelUtils.getTestRemainder())
+    val list = dataSource.getReminders() as Result.Success<List<Reminder>>
     assertThat(list.data.isEmpty(), `is`(false))
   }
 
@@ -33,9 +33,9 @@ class DataSourceTest {
   @Test
   fun saveAndRetrieveById() = runBlockingTest {
     val remainder = TestModelUtils.getTestRemainder()
-    dataSource.saveRemainder(remainder)
+    dataSource.saveReminder(remainder)
 
-    val savedRemainder = dataSource.getRemainderById(remainder.id)
+    val savedRemainder = dataSource.getReminderById(remainder.id)
     assertThat(savedRemainder is Result.Success,`is`(true))
     savedRemainder as Result.Success
 
@@ -46,11 +46,11 @@ class DataSourceTest {
   @Test
   fun saveAndDeleteByID() = runBlockingTest {
     val remainder = TestModelUtils.getTestRemainder()
-    dataSource.saveRemainder(remainder)
-    val list = dataSource.getRemainders() as Result.Success<List<Remainder>>
+    dataSource.saveReminder(remainder)
+    val list = dataSource.getReminders() as Result.Success<List<Reminder>>
     assertThat(list.data.isNotEmpty(), `is`(true))
-    dataSource.deleteRemainder(remainder)
-    val savedRemainder = dataSource.getRemainderById(remainder.id)
+    dataSource.deleteReminder(remainder)
+    val savedRemainder = dataSource.getReminderById(remainder.id)
     assertThat(savedRemainder is Result.Error, `is`(true))
 
   }

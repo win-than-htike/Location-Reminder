@@ -5,24 +5,24 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import com.udacity.project4.base.BaseViewModel
-import com.udacity.project4.model.Remainder
+import com.udacity.project4.model.Reminder
 import com.udacity.project4.repo.RemindersRepository
 import com.udacity.project4.utils.Result
 
 class ReminderDetailViewModel constructor(repository: RemindersRepository) :
   BaseViewModel() {
-  private val _remainder = MutableLiveData<Remainder>()
+  private val _reminder = MutableLiveData<Reminder>()
 
-  val remaindersRepository = repository
+  val remindersRepository = repository
 
-  val remainder: LiveData<Remainder>
-    get() = _remainder
+  val reminder: LiveData<Reminder>
+    get() = _reminder
 
   fun getRemainderByPlaceId(placeId: String) {
     viewModelScope.launch {
-      remaindersRepository.getRemainderById(placeId).let {
+      remindersRepository.getReminderById(placeId).let {
         if (it is Result.Success) {
-          _remainder.value = it.data
+          _reminder.value = it.data
         }
       }
     }

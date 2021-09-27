@@ -20,7 +20,7 @@ import com.google.android.gms.location.LocationServices
 import com.google.android.material.snackbar.Snackbar
 import com.udacity.project4.MainActivity
 import com.udacity.project4.R
-import com.udacity.project4.databinding.FragmentAddNewRemainderBinding
+import com.udacity.project4.databinding.FragmentAddNewReminderBinding
 import com.udacity.project4.geofence.GeofenceBroadcastReceiver
 import com.udacity.project4.utils.GeofenceUtils
 import com.udacity.project4.utils.safeNavigate
@@ -42,7 +42,7 @@ class AddNewReminderFragment : Fragment() {
   }
 
   val viewModel: AddNewReminderViewModel by inject()
-  private lateinit var binding: FragmentAddNewRemainderBinding
+  private lateinit var binding: FragmentAddNewReminderBinding
 
   private lateinit var geofencingClient: GeofencingClient
 
@@ -65,7 +65,7 @@ class AddNewReminderFragment : Fragment() {
     savedInstanceState: Bundle?
   ): View {
     binding =
-      DataBindingUtil.inflate(inflater, R.layout.fragment_add_new_remainder, container, false)
+      DataBindingUtil.inflate(inflater, R.layout.fragment_add_new_reminder, container, false)
     binding.apply {
       lifecycleOwner = viewLifecycleOwner
       vm = viewModel

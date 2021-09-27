@@ -4,26 +4,26 @@ import androidx.lifecycle.LiveData
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import com.udacity.project4.db.RemindersDao
-import com.udacity.project4.model.Remainder
+import com.udacity.project4.model.Reminder
 import com.udacity.project4.utils.Result
 
 class ReminderLocalDataSource constructor(private val dao: RemindersDao) :
   ReminderDataSource {
-  override suspend fun saveRemainder(remainder: Remainder) {
+  override suspend fun saveReminder(reminder: Reminder) {
     withContext(Dispatchers.IO) {
-      dao.insertRemainder(remainder)
+      dao.insertRemainder(reminder)
     }
   }
 
-  override fun observeRemainders(): LiveData<List<Remainder>> {
+  override fun observeReminders(): LiveData<List<Reminder>> {
     return dao.observeRemainders()
   }
 
-  override suspend fun deleteRemainder(remainder: Remainder) {
-    dao.deleteRemainder(remainder)
+  override suspend fun deleteReminder(reminder: Reminder) {
+    dao.deleteRemainder(reminder)
   }
 
-  override suspend fun getRemainderById(id: String) = withContext(Dispatchers.IO) {
+  override suspend fun getReminderById(id: String) = withContext(Dispatchers.IO) {
     return@withContext try {
       Result.Success(dao.getRemainderById(id)!!)
     } catch (e: Exception) {
@@ -31,7 +31,7 @@ class ReminderLocalDataSource constructor(private val dao: RemindersDao) :
     }
   }
 
-  override suspend fun getRemainders() = withContext(Dispatchers.IO) {
+  override suspend fun getReminders() = withContext(Dispatchers.IO) {
     return@withContext try {
       Result.Success(dao.getRemainders())
     } catch (e: Exception) {
@@ -39,7 +39,7 @@ class ReminderLocalDataSource constructor(private val dao: RemindersDao) :
     }
   }
 
-  override suspend fun deleteAllRemainder() {
+  override suspend fun deleteAllReminder() {
     dao.deleteAllRemainders()
   }
 }

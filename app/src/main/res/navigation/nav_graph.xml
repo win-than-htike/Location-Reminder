@@ -21,7 +21,7 @@
         android:id="@+id/remaindersFragment"
         android:name="com.udacity.project4.feature.list.RemaindersFragment"
         android:label="@string/title_remainders"
-        tools:layout="@layout/fragment_remainders">
+        tools:layout="@layout/fragment_reminders">
         <action
             android:id="@+id/action_remaindersFragment_to_loginFragment"
             app:destination="@id/loginFragment"
@@ -39,7 +39,7 @@
         android:id="@+id/addNewRemainder"
         android:name="com.udacity.project4.feature.add.AddNewReminderFragment"
         android:label="@string/text_add_new_remainder"
-        tools:layout="@layout/fragment_add_new_remainder">
+        tools:layout="@layout/fragment_add_new_reminder">
         <action
             android:id="@+id/action_addNewRemainder_to_mapFragment"
             app:destination="@id/mapFragment" />
@@ -57,7 +57,7 @@
         android:id="@+id/remainderDetailFragment"
         android:name="com.udacity.project4.feature.detail.ReminderDetailFragment"
         android:label="RemainderDetailFragment"
-        tools:layout="@layout/fragment_remainder_detail">
+        tools:layout="@layout/fragment_reminder_detail">
 
         <argument
             android:name="GEOFENCE_EXTRA"

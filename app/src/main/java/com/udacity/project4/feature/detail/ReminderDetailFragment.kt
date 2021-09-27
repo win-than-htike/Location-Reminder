@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.udacity.project4.R
-import com.udacity.project4.databinding.FragmentRemainderDetailBinding
+import com.udacity.project4.databinding.FragmentReminderDetailBinding
 import com.udacity.project4.utils.GeofenceUtils
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -19,7 +19,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
  */
 class ReminderDetailFragment : Fragment() {
 
-  private lateinit var binding: FragmentRemainderDetailBinding
+  private lateinit var binding: FragmentReminderDetailBinding
   val viewModel: ReminderDetailViewModel by viewModel()
 
   override fun onCreateView(
@@ -28,14 +28,14 @@ class ReminderDetailFragment : Fragment() {
   ): View {
     // Inflate the layout for this fragment
     binding =
-      DataBindingUtil.inflate(inflater, R.layout.fragment_remainder_detail, container, false)
+      DataBindingUtil.inflate(inflater, R.layout.fragment_reminder_detail, container, false)
     binding.apply {
       vm = viewModel
       lifecycleOwner = viewLifecycleOwner
     }
     val placeId = arguments?.getString(GeofenceUtils.GEOFENCE_EXTRA)
     viewModel.getRemainderByPlaceId(placeId.orEmpty())
-    viewModel.remainder.observe(viewLifecycleOwner, { remainder ->
+    viewModel.reminder.observe(viewLifecycleOwner, { remainder ->
       if(requireActivity() is AppCompatActivity)
         (requireActivity() as AppCompatActivity).supportActionBar?.title = remainder.title
     })

@@ -5,38 +5,38 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.udacity.project4.databinding.ItemRemainderBinding
-import com.udacity.project4.model.Remainder
+import com.udacity.project4.databinding.ItemReminderBinding
+import com.udacity.project4.model.Reminder
 
 interface RemainderAdapterCallback {
-  fun itemDelete(remainder: Remainder)
-  fun onItemClick(remainder: Remainder)
+  fun itemDelete(remainder: Reminder)
+  fun onItemClick(remainder: Reminder)
 }
 
 class RemainderAdapter(private val callback: RemainderAdapterCallback) :
-  ListAdapter<Remainder, RemainderVH>(diffUtils) {
+  ListAdapter<Reminder, ReminderVH>(diffUtils) {
 
 
-  override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RemainderVH {
+  override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ReminderVH {
 
-    return RemainderVH(
-      ItemRemainderBinding.inflate(LayoutInflater.from(parent.context), parent, false),
+    return ReminderVH(
+      ItemReminderBinding.inflate(LayoutInflater.from(parent.context), parent, false),
       callback
     )
   }
 
-  override fun onBindViewHolder(holder: RemainderVH, position: Int) {
+  override fun onBindViewHolder(holder: ReminderVH, position: Int) {
     holder.onBind(getItem(position))
   }
 
 
   companion object {
-    val diffUtils = object : DiffUtil.ItemCallback<Remainder>() {
-      override fun areItemsTheSame(oldItem: Remainder, newItem: Remainder): Boolean {
+    val diffUtils = object : DiffUtil.ItemCallback<Reminder>() {
+      override fun areItemsTheSame(oldItem: Reminder, newItem: Reminder): Boolean {
         return oldItem.id == newItem.id
       }
 
-      override fun areContentsTheSame(oldItem: Remainder, newItem: Remainder): Boolean {
+      override fun areContentsTheSame(oldItem: Reminder, newItem: Reminder): Boolean {
         return oldItem == newItem
       }
     }
@@ -44,12 +44,12 @@ class RemainderAdapter(private val callback: RemainderAdapterCallback) :
 }
 
 
-class RemainderVH(
-  private val binding: ItemRemainderBinding,
+class ReminderVH(
+  private val binding: ItemReminderBinding,
   private val callback: RemainderAdapterCallback
 ) :
   RecyclerView.ViewHolder(binding.root) {
-  fun onBind(item: Remainder) {
+  fun onBind(item: Reminder) {
     binding.apply {
       remainder = item
       ivDelete.setOnClickListener { callback.itemDelete(item) }

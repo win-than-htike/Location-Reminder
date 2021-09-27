@@ -25,7 +25,7 @@ class RemindersDaoTest {
   private lateinit var database: AppDatabase
   private lateinit var remainderDao: RemindersDao
 
-  private val reminderData = TestModelUtils.getTestRemainder()
+  private val reminderData = TestModelUtils.getTestReminder()
 
   @get:Rule
   val instantTaskExecutorRule = InstantTaskExecutorRule()
@@ -37,7 +37,7 @@ class RemindersDaoTest {
       AppDatabase::class.java
     ).build()
 
-    remainderDao = database.remaindersDao()
+    remainderDao = database.remindersDao()
   }
 
   @After

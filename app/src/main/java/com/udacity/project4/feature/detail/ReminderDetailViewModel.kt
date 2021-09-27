@@ -6,10 +6,10 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import com.udacity.project4.base.BaseViewModel
 import com.udacity.project4.model.Remainder
-import com.udacity.project4.repo.RemaindersRepository
+import com.udacity.project4.repo.RemindersRepository
 import com.udacity.project4.utils.Result
 
-class RemainderDetailViewModel constructor(repository: RemaindersRepository) :
+class ReminderDetailViewModel constructor(repository: RemindersRepository) :
   BaseViewModel() {
   private val _remainder = MutableLiveData<Remainder>()
 

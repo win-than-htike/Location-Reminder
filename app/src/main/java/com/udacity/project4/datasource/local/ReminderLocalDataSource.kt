@@ -3,12 +3,12 @@ package com.udacity.project4.datasource.local
 import androidx.lifecycle.LiveData
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import com.udacity.project4.db.RemaindersDao
+import com.udacity.project4.db.RemindersDao
 import com.udacity.project4.model.Remainder
 import com.udacity.project4.utils.Result
 
-class ReminderLocalDataSource constructor(private val dao: RemaindersDao) :
-  RemainderDataSource {
+class ReminderLocalDataSource constructor(private val dao: RemindersDao) :
+  ReminderDataSource {
   override suspend fun saveRemainder(remainder: Remainder) {
     withContext(Dispatchers.IO) {
       dao.insertRemainder(remainder)

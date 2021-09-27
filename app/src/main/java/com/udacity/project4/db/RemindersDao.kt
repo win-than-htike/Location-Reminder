@@ -5,7 +5,7 @@ import androidx.room.*
 import com.udacity.project4.model.Remainder
 
 @Dao
-interface RemaindersDao {
+interface RemindersDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertRemainder(remainder: Remainder)
 

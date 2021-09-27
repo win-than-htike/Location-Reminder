@@ -37,7 +37,7 @@
 
     <fragment
         android:id="@+id/addNewRemainder"
-        android:name="com.udacity.project4.feature.add.AddNewRemainderFragment"
+        android:name="com.udacity.project4.feature.add.AddNewReminderFragment"
         android:label="@string/text_add_new_remainder"
         tools:layout="@layout/fragment_add_new_remainder">
         <action
@@ -55,7 +55,7 @@
         tools:layout="@layout/fragment_map" />
     <fragment
         android:id="@+id/remainderDetailFragment"
-        android:name="com.udacity.project4.feature.detail.RemainderDetailFragment"
+        android:name="com.udacity.project4.feature.detail.ReminderDetailFragment"
         android:label="RemainderDetailFragment"
         tools:layout="@layout/fragment_remainder_detail">
 

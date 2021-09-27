@@ -10,7 +10,7 @@ import com.google.android.gms.location.GeofencingEvent
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import com.udacity.project4.repo.RemaindersRepository
+import com.udacity.project4.repo.RemindersRepository
 import com.udacity.project4.utils.GeofenceUtils
 import com.udacity.project4.utils.sendGeofenceEnteredNotification
 import org.koin.android.ext.android.inject
@@ -18,7 +18,7 @@ import timber.log.Timber
 import com.udacity.project4.utils.Result
 
 class GeoJobService : JobIntentService() {
-  private val repository: RemaindersRepository by inject()
+  private val repository: RemindersRepository by inject()
 
 
   override fun onHandleWork(intent: Intent) {

@@ -6,5 +6,5 @@ import com.udacity.project4.model.Remainder
 
 @Database(entities = [Remainder::class], version = 1, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
-    abstract fun remaindersDao(): RemaindersDao
+    abstract fun remaindersDao(): RemindersDao
 }

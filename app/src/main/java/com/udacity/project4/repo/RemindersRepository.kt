@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import com.udacity.project4.model.Remainder
 import com.udacity.project4.utils.Result
 
-interface RemaindersRepository {
+interface RemindersRepository {
 
     fun observeRemainders(): LiveData<List<Remainder>>
 

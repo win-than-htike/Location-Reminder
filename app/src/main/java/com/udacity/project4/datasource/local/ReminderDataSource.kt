@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import com.udacity.project4.model.Remainder
 import com.udacity.project4.utils.Result
 
-interface RemainderDataSource {
+interface ReminderDataSource {
 
     suspend fun saveRemainder(remainder: Remainder)
 

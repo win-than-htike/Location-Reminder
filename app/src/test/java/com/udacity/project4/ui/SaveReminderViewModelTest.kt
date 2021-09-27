@@ -9,7 +9,7 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
 import com.udacity.project4.MainCoroutineRule
 import com.udacity.project4.R
-import com.udacity.project4.feature.add.AddNewRemainderViewModel
+import com.udacity.project4.feature.add.AddNewReminderViewModel
 import com.udacity.project4.getOrAwaitValue
 import com.udacity.project4.model.Point
 import com.udacity.project4.source.FakeRepository
@@ -34,7 +34,7 @@ class SaveReminderViewModelTest {
   @get:Rule
   val mainCoroutineRule = MainCoroutineRule()
 
-  private lateinit var addRemainderViewModel: AddNewRemainderViewModel
+  private lateinit var addRemainderViewModel: AddNewReminderViewModel
   private lateinit var repository: FakeRepository
 
 
@@ -43,7 +43,7 @@ class SaveReminderViewModelTest {
     stopKoin()
     repository = FakeRepository()
     addRemainderViewModel =
-      AddNewRemainderViewModel(ApplicationProvider.getApplicationContext(), repository)
+      AddNewReminderViewModel(ApplicationProvider.getApplicationContext(), repository)
   }
 
   @Test

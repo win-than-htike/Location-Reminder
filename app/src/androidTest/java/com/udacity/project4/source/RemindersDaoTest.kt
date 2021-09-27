@@ -10,7 +10,7 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
 import com.udacity.project4.TestModelUtils
 import com.udacity.project4.db.AppDatabase
-import com.udacity.project4.db.RemaindersDao
+import com.udacity.project4.db.RemindersDao
 import org.junit.After
 import org.junit.Before
 import org.junit.Rule
@@ -23,7 +23,7 @@ import org.junit.runner.RunWith
 class RemindersDaoTest {
 
   private lateinit var database: AppDatabase
-  private lateinit var remainderDao: RemaindersDao
+  private lateinit var remainderDao: RemindersDao
 
   private val reminderData = TestModelUtils.getTestRemainder()
 

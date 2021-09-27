@@ -25,7 +25,7 @@ import com.google.android.gms.maps.model.MarkerOptions
 import com.udacity.project4.MainActivity
 import com.udacity.project4.R
 import com.udacity.project4.databinding.FragmentMapBinding
-import com.udacity.project4.feature.add.AddNewRemainderViewModel
+import com.udacity.project4.feature.add.AddNewReminderViewModel
 import com.udacity.project4.model.Point
 import com.udacity.project4.utils.LocationHandler
 import com.udacity.project4.utils.showSnackBar
@@ -47,7 +47,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
   private lateinit var locationHandler: LocationHandler
 
   private val viewModel: MapViewModel by inject()
-  private val addRemainderViewModel: AddNewRemainderViewModel by inject()
+  private val addRemainderViewModel: AddNewReminderViewModel by inject()
 
   override fun onCreateView(
     inflater: LayoutInflater,
@@ -85,9 +85,6 @@ class MapFragment : Fragment(), OnMapReadyCallback {
     map.isMyLocationEnabled = true
     if (viewModel.selectPoi.value == null) {
       locationHandler.requestLocation()
-    }
-    map.setOnMyLocationClickListener {
-      requestForegroundPermission()
     }
   }
 

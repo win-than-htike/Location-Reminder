@@ -9,12 +9,12 @@ import kotlinx.coroutines.launch
 import com.udacity.project4.R
 import com.udacity.project4.model.Point
 import com.udacity.project4.model.Remainder
-import com.udacity.project4.repo.RemaindersRepository
+import com.udacity.project4.repo.RemindersRepository
 import com.udacity.project4.utils.Event
 
-class AddNewRemainderViewModel constructor(
+class AddNewReminderViewModel constructor(
   val app: Application,
-  remainderRepository: RemaindersRepository
+  remainderRepository: RemindersRepository
 ) :
   AndroidViewModel(app) {
 

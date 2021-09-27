@@ -24,13 +24,13 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
  * Use the [RemaindersFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-private const val TAG = "RemaindersFragment"
+private const val TAG = "RemindersFragment"
 
 class RemaindersFragment : Fragment(), RemainderAdapterCallback {
 
   private lateinit var binding: FragmentRemaindersBinding
 
-  val viewModel: RemaindersViewModel by viewModel()
+  val viewModel: RemindersViewModel by viewModel()
 
   private lateinit var adapter: RemainderAdapter
 

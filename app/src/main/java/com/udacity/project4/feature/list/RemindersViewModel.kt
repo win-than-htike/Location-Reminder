@@ -12,12 +12,12 @@ import kotlinx.coroutines.launch
 import com.udacity.project4.R
 import com.udacity.project4.base.BaseViewModel
 import com.udacity.project4.model.Remainder
-import com.udacity.project4.repo.RemaindersRepository
+import com.udacity.project4.repo.RemindersRepository
 import com.udacity.project4.utils.Event
 import com.udacity.project4.utils.Result.Error
 import com.udacity.project4.utils.Result.Success
 
-class RemaindersViewModel constructor(private val repository: RemaindersRepository) :
+class RemindersViewModel constructor(private val repository: RemindersRepository) :
   BaseViewModel() {
   val remindersList = MutableLiveData<List<Remainder>>()
   private val _logoutEvent = MutableLiveData<Event<Unit>>()

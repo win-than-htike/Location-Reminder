@@ -4,7 +4,7 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
 import com.udacity.project4.MainCoroutineRule
-import com.udacity.project4.feature.list.RemaindersViewModel
+import com.udacity.project4.feature.list.RemindersViewModel
 import com.udacity.project4.getOrAwaitValue
 import com.udacity.project4.model.Remainder
 import com.udacity.project4.source.FakeRepository
@@ -26,14 +26,14 @@ class RemindersListViewModelTest {
   @get:Rule
   val mainCoroutineRule = MainCoroutineRule()
 
-  private lateinit var viewModel: RemaindersViewModel
+  private lateinit var viewModel: RemindersViewModel
   private lateinit var fakeRepository: FakeRepository
 
   @Before
   fun setup() {
     stopKoin()
     fakeRepository = FakeRepository()
-    viewModel = RemaindersViewModel(fakeRepository)
+    viewModel = RemindersViewModel(fakeRepository)
   }
 
   @Test

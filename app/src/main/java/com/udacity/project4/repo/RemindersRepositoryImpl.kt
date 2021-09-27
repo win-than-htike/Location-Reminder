@@ -1,14 +1,14 @@
 package com.udacity.project4.repo
 
-import com.udacity.project4.datasource.local.RemainderDataSource
+import com.udacity.project4.datasource.local.ReminderDataSource
 import com.udacity.project4.model.Remainder
 import com.udacity.project4.utils.wrapEspressoIdlingResource
 import com.udacity.project4.utils.Result
 
-class RemaindersRepositoryImpl constructor(
-  private val remaindersLocalDataSource: RemainderDataSource,
+class RemindersRepositoryImpl constructor(
+  private val remaindersLocalDataSource: ReminderDataSource,
 ) :
-  RemaindersRepository {
+  RemindersRepository {
 
   override fun observeRemainders() = remaindersLocalDataSource.observeRemainders()
 

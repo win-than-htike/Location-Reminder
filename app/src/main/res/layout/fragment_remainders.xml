@@ -6,7 +6,7 @@
 
     <variable
         name="vm"
-        type="com.udacity.project4.feature.list.RemaindersViewModel" />
+        type="com.udacity.project4.feature.list.RemindersViewModel" />
 
     <variable
         name="adapter"

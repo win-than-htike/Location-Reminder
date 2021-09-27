@@ -17,17 +17,17 @@ import com.udacity.project4.TestModelUtils
 import com.udacity.project4.datasource.local.ReminderLocalDataSource
 import com.udacity.project4.db.AppDatabase
 import com.udacity.project4.model.Remainder
-import com.udacity.project4.repo.RemaindersRepository
-import com.udacity.project4.repo.RemaindersRepositoryImpl
+import com.udacity.project4.repo.RemindersRepository
+import com.udacity.project4.repo.RemindersRepositoryImpl
 import com.udacity.project4.utils.MainCoroutineRule
 import com.udacity.project4.utils.Result
 
 @MediumTest
 @RunWith(AndroidJUnit4::class)
 @ExperimentalCoroutinesApi
-class RemainderTestRepositoryTest {
+class ReminderTestRepositoryTest {
 
-  private lateinit var remainderRepository: RemaindersRepository
+  private lateinit var remainderRepository: RemindersRepository
   private lateinit var database: AppDatabase
 
   @get:Rule
@@ -44,7 +44,7 @@ class RemainderTestRepositoryTest {
     ).allowMainThreadQueries().build()
 
     val dataSource = ReminderLocalDataSource(database.remaindersDao())
-    remainderRepository = RemaindersRepositoryImpl(dataSource)
+    remainderRepository = RemindersRepositoryImpl(dataSource)
   }
 
   @Test

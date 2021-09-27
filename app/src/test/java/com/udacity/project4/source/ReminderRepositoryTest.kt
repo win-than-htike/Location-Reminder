@@ -4,8 +4,8 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
 import com.udacity.project4.TestModelUtils
 import com.udacity.project4.model.Remainder
-import com.udacity.project4.repo.RemaindersRepository
-import com.udacity.project4.repo.RemaindersRepositoryImpl
+import com.udacity.project4.repo.RemindersRepository
+import com.udacity.project4.repo.RemindersRepositoryImpl
 import com.udacity.project4.utils.Result
 import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.Matchers.`is`
@@ -14,15 +14,15 @@ import org.junit.Before
 import org.junit.Test
 
 @ExperimentalCoroutinesApi
-class RemainderRepositoryTest {
+class ReminderRepositoryTest {
 
   private lateinit var fakeDataSource: FakeDataSource
-  private lateinit var remainderRepository: RemaindersRepository
+  private lateinit var remainderRepository: RemindersRepository
 
   @Before
   fun init() {
     fakeDataSource = FakeDataSource()
-    remainderRepository = RemaindersRepositoryImpl(fakeDataSource)
+    remainderRepository = RemindersRepositoryImpl(fakeDataSource)
   }
 
   @Test

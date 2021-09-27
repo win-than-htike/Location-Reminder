@@ -30,10 +30,10 @@ import timber.log.Timber
 
 /**
  * A simple [Fragment] subclass.
- * Use the [AddNewRemainderFragment.newInstance] factory method to
+ * Use the [AddNewReminderFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class AddNewRemainderFragment : Fragment() {
+class AddNewReminderFragment : Fragment() {
 
   companion object {
     const val SELECTED_POI = "SELECTED_POI"
@@ -41,7 +41,7 @@ class AddNewRemainderFragment : Fragment() {
       "AddNewRemainderFragment.action.ACTION_GEOFENCE_EVENT"
   }
 
-  val viewModel: AddNewRemainderViewModel by inject()
+  val viewModel: AddNewReminderViewModel by inject()
   private lateinit var binding: FragmentAddNewRemainderBinding
 
   private lateinit var geofencingClient: GeofencingClient
@@ -120,7 +120,7 @@ class AddNewRemainderFragment : Fragment() {
   private fun setupActions() {
     with(binding) {
       btnLocation.setOnClickListener {
-        findNavController().safeNavigate(AddNewRemainderFragmentDirections.actionAddNewRemainderToMapFragment())
+        findNavController().safeNavigate(AddNewReminderFragmentDirections.actionAddNewRemainderToMapFragment())
       }
       fabSaveRemainder.setOnClickListener {
         viewModel.addNewRemainder()

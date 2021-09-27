@@ -1,11 +1,11 @@
 package com.udacity.project4.source
 
 import androidx.lifecycle.LiveData
-import com.udacity.project4.datasource.local.RemainderDataSource
+import com.udacity.project4.datasource.local.ReminderDataSource
 import com.udacity.project4.model.Remainder
 import com.udacity.project4.utils.Result
 
-class FakeDataSource : RemainderDataSource {
+class FakeDataSource : ReminderDataSource {
 
   private var remainders: MutableList<Remainder> = mutableListOf()
   private var shouldReturnError = false

@@ -5,25 +5,25 @@ import androidx.annotation.VisibleForTesting
 import androidx.room.Room
 import com.udacity.project4.datasource.local.ReminderLocalDataSource
 import com.udacity.project4.db.AppDatabase
-import com.udacity.project4.repo.RemaindersRepository
-import com.udacity.project4.repo.RemaindersRepositoryImpl
+import com.udacity.project4.repo.RemindersRepository
+import com.udacity.project4.repo.RemindersRepositoryImpl
 
 object ServiceLocator {
   private var database: AppDatabase? = null
 
   @Volatile
-  var repository: RemaindersRepository? = null
+  var repository: RemindersRepository? = null
     @VisibleForTesting set
   private val lock = Any()
 
-  fun provideTasksRepository(context: Context): RemaindersRepository {
+  fun provideTasksRepository(context: Context): RemindersRepository {
     synchronized(this) {
       return repository ?: createTasksRepository(context)
     }
   }
 
-  private fun createTasksRepository(context: Context): RemaindersRepository {
-    val newRepo = RemaindersRepositoryImpl(createTaskLocalDataSource(context))
+  private fun createTasksRepository(context: Context): RemindersRepository {
+    val newRepo = RemindersRepositoryImpl(createTaskLocalDataSource(context))
     repository = newRepo
     return newRepo
   }

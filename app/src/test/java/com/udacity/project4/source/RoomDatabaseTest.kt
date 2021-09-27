@@ -11,7 +11,7 @@ import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.test.runBlockingTest
 import com.udacity.project4.TestModelUtils
 import com.udacity.project4.db.AppDatabase
-import com.udacity.project4.db.RemaindersDao
+import com.udacity.project4.db.RemindersDao
 import com.udacity.project4.model.Remainder
 import org.hamcrest.CoreMatchers.`is`
 import org.hamcrest.CoreMatchers.equalTo
@@ -28,7 +28,7 @@ import java.io.IOException
 @ExperimentalCoroutinesApi
 @RunWith(AndroidJUnit4::class)
 class RoomDatabaseTest {
-  private lateinit var remainderDao: RemaindersDao
+  private lateinit var remainderDao: RemindersDao
   private lateinit var remaindersDatabase: AppDatabase
 
   @get:Rule

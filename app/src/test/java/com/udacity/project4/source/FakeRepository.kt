@@ -3,10 +3,10 @@ package com.udacity.project4.source
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.udacity.project4.model.Remainder
-import com.udacity.project4.repo.RemaindersRepository
+import com.udacity.project4.repo.RemindersRepository
 import com.udacity.project4.utils.Result
 
-class FakeRepository : RemaindersRepository {
+class FakeRepository : RemindersRepository {
 
   private var remainders: MutableList<Remainder> = mutableListOf()
   private var remainderLiveData = MutableLiveData<List<Remainder>>()

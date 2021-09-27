@@ -1,15 +1,15 @@
 package com.udacity.project4
 
 import android.app.Application
-import com.udacity.project4.datasource.local.RemainderDataSource
+import com.udacity.project4.datasource.local.ReminderDataSource
 import com.udacity.project4.datasource.local.ReminderLocalDataSource
 import com.udacity.project4.db.DB
-import com.udacity.project4.feature.add.AddNewRemainderViewModel
-import com.udacity.project4.feature.detail.RemainderDetailViewModel
-import com.udacity.project4.feature.list.RemaindersViewModel
+import com.udacity.project4.feature.add.AddNewReminderViewModel
+import com.udacity.project4.feature.detail.ReminderDetailViewModel
+import com.udacity.project4.feature.list.RemindersViewModel
 import com.udacity.project4.feature.map.MapViewModel
-import com.udacity.project4.repo.RemaindersRepository
-import com.udacity.project4.repo.RemaindersRepositoryImpl
+import com.udacity.project4.repo.RemindersRepository
+import com.udacity.project4.repo.RemindersRepositoryImpl
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -26,20 +26,20 @@ class App : Application() {
       Timber.plant(Timber.DebugTree())
 
     val myModule = module {
-      single<RemainderDataSource> { ReminderLocalDataSource(get()) }
-      single<RemaindersRepository> { RemaindersRepositoryImpl(get() as RemainderDataSource) }
+      single<ReminderDataSource> { ReminderLocalDataSource(get()) }
+      single<RemindersRepository> { RemindersRepositoryImpl(get() as ReminderDataSource) }
       single { DB.createRemainderDatabase(this@App) }
       viewModel {
-        RemaindersViewModel(
-          get() as RemaindersRepository,
+        RemindersViewModel(
+          get() as RemindersRepository,
         )
       }
       viewModel { MapViewModel() }
-      viewModel { RemainderDetailViewModel(get() as RemaindersRepository) }
+      viewModel { ReminderDetailViewModel(get() as RemindersRepository) }
       single {
-        AddNewRemainderViewModel(
+        AddNewReminderViewModel(
           get(),
-          get() as RemaindersRepository,
+          get() as RemindersRepository,
         )
       }
     }

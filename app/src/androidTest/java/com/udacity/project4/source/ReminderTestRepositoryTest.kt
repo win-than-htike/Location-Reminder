@@ -3,6 +3,7 @@ package com.udacity.project4.source
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.runBlocking
 import org.hamcrest.MatcherAssert.assertThat
+import com.google.common.truth.Truth.assertThat
 import org.hamcrest.Matchers.*
 import org.junit.Before
 import org.junit.Rule
@@ -58,6 +59,17 @@ class ReminderTestRepositoryTest {
     assertThat(result.data.description, `is`(notNullValue()))
     assertThat(result.data.latitude, `is`(notNullValue()))
     assertThat(result.data.longitude, `is`(notNullValue()))
+  }
+
+  @Test
+  fun retrieveNonExistingReminderFails() = runBlocking {
+    val result = reminderRepository.getReminderById(TestAndroidModelUtils.getTestReminder().id)
+    assertThat(result).isInstanceOf(Result.Error::class.java)
+
+    result as Result.Error
+
+    assertThat(result.message).isEqualTo("Reminder not found!")
+    assertThat(result.statusCode).isNull()
   }
 
 

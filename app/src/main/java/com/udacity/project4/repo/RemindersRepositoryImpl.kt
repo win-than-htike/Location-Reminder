@@ -25,7 +25,7 @@ class RemindersRepositoryImpl constructor(
   override suspend fun getReminderById(id: String): Result<Reminder> {
     wrapEspressoIdlingResource {
       return try {
-        remindersLocalDataSource.getReminderById(id)
+        remindersLocalDataSource.getReminderById(id) ?: Result.Error("Reminder not found!")
       } catch (e: Exception) {
         Result.Error(e.localizedMessage)
       }

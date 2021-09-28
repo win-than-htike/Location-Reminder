@@ -36,6 +36,7 @@ class App : Application() {
       }
       viewModel { MapViewModel() }
       viewModel { ReminderDetailViewModel(get() as RemindersRepository) }
+
       single {
         AddNewReminderViewModel(
           get(),

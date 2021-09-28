@@ -77,6 +77,12 @@ class RemindersListViewModelTest {
   }
 
   @Test
+  fun noData_hidesLoading() = runBlockingTest {
+    viewModel.loadReminders()
+    assertThat(viewModel.loading.getOrAwaitValue(), `is`(false))
+  }
+
+  @Test
   fun remindersUnavailable_showsError() = runBlockingTest {
     fakeRepository.setShouldReturnError(true)
     viewModel.loadReminders()

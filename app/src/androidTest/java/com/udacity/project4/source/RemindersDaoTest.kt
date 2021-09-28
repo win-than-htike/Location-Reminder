@@ -8,7 +8,7 @@ import androidx.test.filters.SmallTest
 import com.google.common.truth.Truth.assertThat
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
-import com.udacity.project4.TestModelUtils
+import com.udacity.project4.TestAndroidModelUtils
 import com.udacity.project4.db.AppDatabase
 import com.udacity.project4.db.RemindersDao
 import org.junit.After
@@ -25,7 +25,7 @@ class RemindersDaoTest {
   private lateinit var database: AppDatabase
   private lateinit var reminderDao: RemindersDao
 
-  private val reminderData = TestModelUtils.getTestReminder()
+  private val reminderData = TestAndroidModelUtils.getTestReminder()
 
   @get:Rule
   val instantTaskExecutorRule = InstantTaskExecutorRule()
